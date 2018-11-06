@@ -9,6 +9,7 @@
                         <div class="slideshow-container" data-scrollax="properties: { translateY: '200px' }" >
                             <!-- slideshow-item -->	
                             <div class="slideshow-item">
+                                <h2>test</h2>
                                 <div class="bg"  data-bg="images/bg/1.jpg"></div>
                             </div>
                             <!--  slideshow-item end  -->	
