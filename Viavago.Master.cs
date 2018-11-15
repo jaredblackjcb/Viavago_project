@@ -13,5 +13,12 @@ namespace Viavago_project
         {
 
         }
+        protected void btnRegister_OnServerClick(object sender, EventArgs e)
+        {
+            if(txtRegisterPassword.Text == txtConfirmPassword.Text)
+            {
+
+            }
+        }
     }
 }

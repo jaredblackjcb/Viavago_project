@@ -20,6 +20,12 @@
     <link rel="shortcut icon" href="images/favicon.ico">
     <asp:ContentPlaceHolder ID="cphHead" runat="server">
     </asp:ContentPlaceHolder>
+    <script runat="server">
+
+
+
+    </script>
+
 </head>
 <body>
     <form id="form1" runat="server">
@@ -203,18 +209,18 @@
                             <div class="tab">
                                 <div id="tab-1" class="tab-content">
                                     <div class="custom-form">
-                                        <form method="post"  name="registerform">
+                                        <div method="post"  name="registerform">
                                             <label>Username or Email Address * </label>
-                                            <input name="email" type="text"   onClick="this.select()" value=""> 
+                                            <input runat="server" ID="txtLoginEmail" type="text" > 
                                             <label >Password * </label>
-                                            <input name="password" type="password"   onClick="this.select()" value="" > 
-                                            <button type="submit"  class="log-submit-btn"><span>Log In</span></button> 
+                                            <input runat="server" ID="txtLoginPassword" type="password"  > 
+                                            <button runat="server" ID="btnLogin" type="submit"  class="log-submit-btn"><span>Log In</span></button> 
                                             <div class="clearfix"></div>
                                             <div class="filter-tags">
                                                 <input id="check-a" type="checkbox" name="check">
                                                 <label for="check-a">Remember me</label>
                                             </div>
-                                        </form>
+                                        </div>
                                         <div class="lost_password">
                                             <a href="#">Lost Your Password?</a>
                                         </div>
@@ -223,17 +229,19 @@
                                 <div class="tab">
                                     <div id="tab-2" class="tab-content">
                                         <div class="custom-form">
-                                            <form method="post"   name="registerform" class="main-register-form" id="main-register-form2">
+                                            <div method="post"   name="registerform" class="main-register-form" id="main-register-form2">
                                                 <label >First Name * </label>
-                                                <input name="name" type="text"   onClick="this.select()" value=""> 
-                                                <label>Second Name *</label>
-                                                <input name="name2" type="text"  onClick="this.select()" value="">
+                                                <input runat="server" ID="txtFirstName" type="text"> 
+                                                <label>Last Name *</label>
+                                                <input runat="server" ID="txtLastName" type="text" >
                                                 <label>Email Address *</label>
-                                                <input name="email" type="text"  onClick="this.select()" value="">                                              
+                                                <input runat="server" ID="txtRegisterEmail" type="text" >                                              
                                                 <label >Password *</label>
-                                                <input name="password" type="password"   onClick="this.select()" value="" > 
-                                                <button type="submit"     class="log-submit-btn"  ><span>Register</span></button> 
-                                            </form>
+                                                <input runat="server" ID="txtRegisterPassword" type="password" > 
+                                                <label >Confirm Password *</label>
+                                                <input runat="server" ID="txtConfirmPassword" type="password" > 
+                                                <button runat="server" type="submit" ID="btnRegister" class="log-submit-btn" OnServerClick="btnRegister_OnServerClick" ><span>Register</span></button> 
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
