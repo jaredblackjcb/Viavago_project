@@ -240,8 +240,9 @@
                                                 <input runat="server" ID="txtRegisterPassword" type="password" > 
                                                 <label >Confirm Password *</label>
                                                 <input runat="server" ID="txtConfirmPassword" type="password" > 
-                                                <button runat="server" type="submit" ID="btnRegister" class="log-submit-btn" OnServerClick="btnRegister_OnServerClick" ><span>Register</span></button> 
+                                                <button runat="server" type="submit" ID="btnRegister" class="log-submit-btn" <%--OnClick="CreateUser_Click"--%> ><span>Register</span></button> 
                                             </div>
+                                            <asp:Label ID="lblStatus" runat="server" ></asp:Label>
                                         </div>
                                     </div>
                                 </div>

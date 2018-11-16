@@ -27,7 +27,7 @@ public partial class NewTour : System.Web.UI.Page
         SqlCommand cmd = new SqlCommand(insertSql, con);
 
         //create parameters and attach them to the command
-        //cmd.Parameters.AddWithValue("@GuideID", Session["UserID"]); //How to make session variable for UserID?
+        cmd.Parameters.AddWithValue("@GuideID", User.Identity.Name); //How to make session variable for UserID?
         cmd.Parameters.AddWithValue("@TourName", txtTourName.Text);
         cmd.Parameters.AddWithValue("@Category", ddlCategory.Value);
         cmd.Parameters.AddWithValue("@Description", txtDescription.InnerText);
@@ -44,7 +44,7 @@ public partial class NewTour : System.Web.UI.Page
             try
             {
                 string filename = Path.GetFileName(fupTourImage.FileName);
-                fupTourImage.SaveAs(Server.MapPath("~/TourImages" + filename));
+                fupTourImage.SaveAs(Server.MapPath("~/TourImages/" + filename));
                 lblStatus.Text = "Save successful!";
             }
             catch(Exception err)
@@ -53,5 +53,11 @@ public partial class NewTour : System.Web.UI.Page
             }
 
         }
+    }
+
+    protected void Button1_OnClick(object sender, EventArgs e)
+    {
+        FileUpload uploader = new FileUpload();
+        Panel1.Controls.Add(uploader);
     }
 }

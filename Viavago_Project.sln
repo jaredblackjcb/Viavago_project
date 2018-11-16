@@ -6,6 +6,7 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Viavago_Project(1)", ".", "{9B5AFD65-C210-4B97-A9DC-008E398EE07B}"
 	ProjectSection(WebsiteProperties) = preProject
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.6.1"
+		ProjectReferences = "{26afb7d8-d44c-4a29-8f5c-2da26c94ee5a}|IdentityEF.dll;"
 		Debug.AspNetCompiler.VirtualPath = "/localhost_51060"
 		Debug.AspNetCompiler.PhysicalPath = "..\Viavago_Project\"
 		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_51060\"
@@ -24,13 +25,22 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Viavago_Project(1)", ".", "
 		SlnRelativePath = "..\Viavago_Project\"
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentityEF", "..\..\..\Downloads\ustora_solution_asof_11-13\ustora_solution\IdentityEF\IdentityEF.csproj", "{26AFB7D8-D44C-4A29-8F5C-2DA26C94EE5A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{9B5AFD65-C210-4B97-A9DC-008E398EE07B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{9B5AFD65-C210-4B97-A9DC-008E398EE07B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9B5AFD65-C210-4B97-A9DC-008E398EE07B}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{9B5AFD65-C210-4B97-A9DC-008E398EE07B}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{26AFB7D8-D44C-4A29-8F5C-2DA26C94EE5A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{26AFB7D8-D44C-4A29-8F5C-2DA26C94EE5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{26AFB7D8-D44C-4A29-8F5C-2DA26C94EE5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{26AFB7D8-D44C-4A29-8F5C-2DA26C94EE5A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
