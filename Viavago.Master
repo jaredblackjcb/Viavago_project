@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Viavago.master.cs" Inherits="Viavago_project.Viavago" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Viavago.master.cs" Inherits="Viavago" %>
 
 <!DOCTYPE html>
 
@@ -217,8 +217,8 @@
                                             <button runat="server" ID="btnLogin" type="submit"  class="log-submit-btn"><span>Log In</span></button> 
                                             <div class="clearfix"></div>
                                             <div class="filter-tags">
-                                                <input id="check-a" type="checkbox" name="check">
-                                                <label for="check-a">Remember me</label>
+                                                <input runat="server" id="chkRememberMe" type="checkbox" name="check">
+                                                <label for="chkRememberMe">Remember me</label>
                                             </div>
                                         </div>
                                         <div class="lost_password">
@@ -240,7 +240,7 @@
                                                 <input runat="server" ID="txtRegisterPassword" type="password" > 
                                                 <label >Confirm Password *</label>
                                                 <input runat="server" ID="txtConfirmPassword" type="password" > 
-                                                <button runat="server" type="submit" ID="btnRegister" class="log-submit-btn" <%--OnClick="CreateUser_Click"--%> ><span>Register</span></button> 
+                                                <button runat="server" type="submit" ID="btnRegister" class="log-submit-btn" OnClick="CreateUser_Click" ><span>Register</span></button> 
                                             </div>
                                             <asp:Label ID="lblStatus" runat="server" ></asp:Label>
                                         </div>
