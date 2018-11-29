@@ -82,7 +82,6 @@ public partial class Viavago : System.Web.UI.MasterPage
         //Create a boolean variable that denotes whether the user authentication should persist (the cookie does not expire)
         bool rememberme = chkRememberMe.Checked;
 
-
         //If the user variable is not null (meaning credentials are valid), sign the user in.
         if (user != null)
         {

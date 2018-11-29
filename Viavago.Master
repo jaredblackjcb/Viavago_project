@@ -211,7 +211,7 @@
                                     <div class="custom-form">
                                         <div method="post"  name="registerform">
                                             <label>Username or Email Address * </label>
-                                            <input runat="server" ID="txtLoginEmail" type="text" > 
+                                            <input runat="server" ID="txtLoginEmail" type="text" >
                                             <label >Password * </label>
                                             <input runat="server" ID="txtLoginPassword" type="password"  > 
                                             <button runat="server" ID="btnLogin" type="submit"  class="log-submit-btn"><span>Log In</span></button> 
