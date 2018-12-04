@@ -1,5 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Viavago.master" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="_Default" %>
-
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Viavago.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="Viavago_project.Default" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="cphHead" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cphContent" runat="server">

@@ -56,6 +56,8 @@ public partial class Viavago : System.Web.UI.MasterPage
                 authenticationManager.SignIn(new AuthenticationProperties() { }, userIdentity);
 
                 //Redirect the user to the Profile page where they can add additional profile variables.
+                lblStatus.Text = "Redirecting";
+
                 Response.Redirect("~/Dashboard.aspx");
             }
             else

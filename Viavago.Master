@@ -38,8 +38,10 @@
                         <!-- header-->
             <header class="main-header dark-header fs-header sticky">
                 <div class="header-inner">
+                    <asp:Label ID="lblStatus" runat="server" Text="Status label" ForeColor="White"></asp:Label>
+
                     <div class="logo-holder">
-                        <a href="index.html"><img src="images/logo.png" alt=""></a>
+                        <a href="Default.aspx"><img src="images/logo.png" alt=""></a>
                     </div>
                     <div class="header-search vis-header-search">
                         <div class="header-search-input-item">
@@ -59,7 +61,7 @@
                     </div>
                     <div class="show-search-button"><i class="fa fa-search"></i> <span>Search</span></div>
                     <a href="dashboard-add-listing.html" class="add-list">Add Listing <span><i class="fa fa-plus"></i></span></a>
-                    <div class="show-reg-form modal-open"><i class="fa fa-sign-in"></i>Sign In</div>
+                    <div class="show-reg-form modal-open"><i class="fa fa-sign-in"></i><%--<asp:LoginStatus ID="LoginStatus1" runat="server" />--%>Sign In</div>
                     <!-- nav-button-wrap--> 
                     <div class="nav-button-wrap color-bg">
                         <div class="nav-button">
@@ -72,20 +74,20 @@
                         <nav>
                             <ul>
                                 <li>
-                                    <a href="#">Home <i class="fa fa-caret-down"></i></a>
+                                    <a href="Default.aspx">Home <%--<i class="fa fa-caret-down"></i>--%></a>
                                     <!--second level -->   
-                                    <ul>
+<%--                                    <ul>
                                         <li><a href="index.html">Parallax Image</a></li>
                                         <li><a href="index2.html">Video</a></li>
                                         <li><a href="index3.html">Map</a></li>
                                         <li><a href="index4.html">Slideshow</a></li>
                                         <li><a href="index5.html">Slider</a></li>
                                     </ul>
-                                    <!--second level end-->
+                                    <!--second level end-->--%>
                                 </li>
                                 <li>
-                                    <a href="#" class="act-link">Listings <i class="fa fa-caret-down"></i></a>
-                                    <!--second level -->
+                                    <a href="Tours.aspx" class="act-link">Browse Tours <%--<i class="fa fa-caret-down"></i>--%></a>
+<%--                                    <!--second level -->
                                     <ul>
                                         <li><a href="listing.html">Column map</a></li>
                                         <li><a href="listing2.html">Column map 2</a></li>
@@ -105,14 +107,14 @@
                                             <!--third  level end-->
                                         </li>
                                     </ul>
-                                    <!--second level end-->
+                                    <!--second level end-->--%>
                                 </li>
                                 <li>
-                                    <a href="blog.html">News</a>
+                                    <a href="GuideRegistration.aspx">Become a Guide</a>
                                 </li>
                                 <li>
-                                    <a href="#">Pages <i class="fa fa-caret-down"></i></a>
-                                    <!--second level -->   
+                                    <a href="ContactUs.aspx">Contact Us <%--<i class="fa fa-caret-down"></i>--%></a>
+<%--                                    <!--second level -->   
                                     <ul>
                                         <li><a href="about.html">About</a></li>
                                         <li><a href="contacts.html">Contacts</a></li>
@@ -127,7 +129,7 @@
                                         <li><a href="header2.html">Header 2</a></li>
                                         <li><a href="footer-fixed.html">Footer Fixed</a></li>
                                     </ul>
-                                    <!--second level end-->                                
+                                    <!--second level end-->                --%>                
                                 </li>
                             </ul>
                         </nav>
@@ -240,9 +242,8 @@
                                                 <input runat="server" ID="txtRegisterPassword" type="password" > 
                                                 <label >Confirm Password *</label>
                                                 <input runat="server" ID="txtConfirmPassword" type="password" > 
-                                                <button runat="server" type="submit" ID="btnRegister" class="log-submit-btn" OnClick="CreateUser_Click" ><span>Register</span></button> 
+                                                <button runat="server" type="submit" ID="btnRegister" class="log-submit-btn" OnServerClick="CreateUser_Click" ><span>Register</span></button> 
                                             </div>
-                                            <asp:Label ID="lblStatus" runat="server" ></asp:Label>
                                         </div>
                                     </div>
                                 </div>

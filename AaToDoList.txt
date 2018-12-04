@@ -1,0 +1,24 @@
+﻿To do list for project:
+Logged In:
+Bookings.aspx
+ChangePassword.aspx-INSERT
+Dashboard.aspx
+EditProfile.aspx-INSERT
+Messages.aspx
+MyTours.aspx
+NewTour.aspx-INSERT
+Reviews.aspx
+
+
+Anonymous:
+Default.aspx
+Tours.aspx
+TourDetail.aspx-INSERT(Tour Booking), SELECT(TourInformation)
+UserProfile.aspx
+GuideRegistration.aspx-INSERT
+404.html
+
+
+Viavago.Master
+	links- Home, Browse Tours, Become a Guide, Contact us?
+Web.config
