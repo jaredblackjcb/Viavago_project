@@ -43,14 +43,13 @@
                                         <div class="main-search-input-item">
                                             <select data-placeholder="All Categories" class="chosen-select" >
                                                 <option>All Categories</option>
-                                                <option>Shops</option>
-                                                <option>Hotels</option>
-                                                <option>Restaurants</option>
-                                                <option>Fitness</option>
-                                                <option>Events</option>
+                                                <option>Outdoors</option>
+                                                <option>Indoors</option>
+                                                <option>Guides</option>
+                                                <option>Viavago Favorites</option>
                                             </select>
                                         </div>
-                                        <button class="main-search-button" onclick="window.location.href='listings-half-screen-map-list.html'">Search</button>
+                                        <asp:Button runat="server" class="main-search-button" PostBackUrl="~/Tours.aspx" Text="Search"></asp:Button>
                                     </div>
                                 </div>
                             </div>

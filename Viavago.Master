@@ -50,14 +50,13 @@
                         <div class="header-search-select-item">
                             <select data-placeholder="All Categories" class="chosen-select" >
                                 <option>All Categories</option>
-                                <option>Shops</option>
-                                <option>Hotels</option>
-                                <option>Restaurants</option>
-                                <option>Fitness</option>
-                                <option>Events</option>
+                                <option>Outdoors</option>
+                                <option>Indoors</option>
+                                <option>Guides</option>
+                                <option>Vivago Favorites</option>
                             </select>
                         </div>
-                        <button class="header-search-button" onclick="window.location.href='listing.html'">Search</button>
+                        <asp:button runat="server" class="header-search-button" PostbackURl="~/Tours.aspx" Text="Search"></asp:button>
                     </div>
                     <div class="show-search-button"><i class="fa fa-search"></i> <span>Search</span></div>
                     <a href="dashboard-add-listing.html" class="add-list">Add Listing <span><i class="fa fa-plus"></i></span></a>
@@ -79,6 +78,8 @@
                                 </li>
                                 <li>
                                     <a href="Tours.aspx">Browse Tours</a>
+                                 </li>   
+                                
 </header>
         <div id ="wrapper">
   
@@ -113,9 +114,9 @@
                                 </div>
 
                                     <ul  class="footer-contacts fl-wrap">
-                                        <li><span><i class="fa fa-envelope-o"></i> Mail :</span><a href="#" target="_blank">yourmail@domain.com</a></li>
-                                        <li> <span><i class="fa fa-map-marker"></i> Adress :</span><a href="#" target="_blank">USA 27TH Brooklyn NY</a></li>
-                                        <li><span><i class="fa fa-phone"></i> Phone :</span><a href="#">+7(111)123456789</a></li>
+                                        <li><span><i class="fa fa-envelope-o"></i> Mail :</span><a href="#" target="_blank">Viavagohelp@viavagotravel.com</a></li>
+                                        <li> <span><i class="fa fa-map-marker"></i> Adress :</span><a href="#" target="_blank">USA, 27TH Brooklyn NY</a></li>
+                                        <li><span><i class="fa fa-phone"></i> Phone :</span><a href="#">+8(435)565-4565</a></li>
                                     </ul>
 
                             </div>

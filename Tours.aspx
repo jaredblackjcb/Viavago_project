@@ -36,15 +36,13 @@
                                                 <option>Staten Island</option>
                                             </select>
                                         </div>
-                                        <div class="listsearch-input-item">
-                                            <select data-placeholder="All Categories" class="chosen-select" >
-                                                <option>All Categories</option>
-                                                <option>Shops</option>
-                                                <option>Hotels</option>
-                                                <option>Restaurants</option>
-                                                <option>Fitness</option>
-                                                <option>Events</option>
-                                            </select>
+                                        <div>
+                                            <asp:LoginView ID="LoginView1" runat="server">
+                                                <AnonymousTemplate>
+                                                    <asp:Label ID="Label1" runat="server" ForeColor="Red" Font-Bold="true" Text="SIGN IN TO BOOK YOU TOUR"></asp:Label>
+                                                </AnonymousTemplate>
+                                                
+                                            </asp:LoginView>
                                         </div>
                                     <div class="listsearch-input-text" id="autocomplete-container">
                                         <label><i class="mbri-map-pin"></i> Enter Addres </label>
@@ -59,7 +57,7 @@
                                                     <input class="distance-radius rangeslider--horizontal" type="range" min="1" max="100" step="1" value="1" data-title="Radius around selected destination">
                                                 </div>
                                             </div>
-                                            <!-- Checkboxes -->
+                                            <%--<!-- Checkboxes -->
                                             <div class=" fl-wrap filter-tags">
                                                 <h4>Filter by Tags</h4>
                                                 <div class="filter-tags-wrap">
@@ -78,7 +76,7 @@
                                                     <input id="check-d" type="checkbox" name="check">
                                                     <label for="check-d">Wireless Internet</label>
                                                 </div>
-                                            </div>
+                                            </div>--%>
                                         </div>
                                         <!-- hidden-listing-filter end -->
                                         <button class="button fs-map-btn">Update</button>
@@ -91,7 +89,8 @@
                                     <!-- listing-item -->
                                     <asp:SqlDataSource ID="SQLTours" runat="server" ConnectionString='<%$ ConnectionStrings:5050_Viavago %>' SelectCommand="SELECT i.[TourID], [GuideID], [TourName], [Category], [Description], [Price], [NumberOfReviews], [AverageRating], [NumberOfLikes], [NumberOfViews], [MapiFrame], [StreetAddress], [City], [State], [Country], ImgUrl 
                                     FROM [Tour_Information] as i JOIN Tour_Images as t
-                                    ON i.TourID = t.TourID">
+                                    ON i.TourID = t.TourID
+                                    Order By AverageRating">
                                     </asp:SqlDataSource>
                                     <asp:Repeater ID="lstTours" runat="server" DataSourceID="SQLTours">
                                        <ItemTemplate>
@@ -111,7 +110,7 @@
                                                 <p><%# Eval("Description") %></p>
                                                 <div class="geodir-category-options fl-wrap">
                                                     <div class="listing-rating card-popup-rainingvis" data-starrating2="5">
-                                                        <span>(<%# Eval("NumberofReviews") %> reviews)</span>
+                                                        <span>(<%# Eval("NumberofReviews") %>reviews)</span>
                                                     </div>
                                                     <div class="geodir-category-location"><a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i><%# Eval("StreetAddress") %>,<%# Eval("City") %>, <%# Eval("State") %></a></div>
                                                 </div>
@@ -124,31 +123,7 @@
                                     
                                     
                                     <!-- listing-item end-->  
-                                    <!-- listing-item -->
-                                    <div class="listing-item">
-                                        <article class="geodir-category-listing fl-wrap">
-                                            <div class="geodir-category-img">
-                                                <img src="images/restaurant.jpg" alt="">
-                                                <div class="overlay"></div>
-                                                <div class="list-post-counter"><span>4</span><i class="fa fa-heart"></i></div>
-                                            </div>
-                                            <div class="geodir-category-content fl-wrap">
-                                                <a class="listing-geodir-category" href="listing.html">Restaurants</a>
-                                                <div class="listing-avatar"><a href="author-single.html"><img src="images/avatar/1.jpg" alt=""></a>
-                                                    <span class="avatar-tooltip">Added By  <strong>Lisa Smith</strong></span>
-                                                </div>
-                                                <h3><a href="listing-single.html">Luxury Restourant</a></h3>
-                                                <p>Sed interdum metus at nisi tempor laoreet. Integer gravida orci a justo sodales, sed lobortis est placerat.</p>
-                                                <div class="geodir-category-options fl-wrap">
-                                                    <div class="listing-rating card-popup-rainingvis" data-starrating2="5">
-                                                        <span>(7 reviews)</span>
-                                                    </div>
-                                                    <div class="geodir-category-location"><a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i> 27th Brooklyn New York, NY 10065</a></div>
-                                                </div>
-                                            </div>
-                                        </article>
-                                    </div>
-                                    <!-- listing-item end-->
+                                    
                                     <!-- listing-item -->
                                     <div class="listing-item">
                                         <article class="geodir-category-listing fl-wrap">
