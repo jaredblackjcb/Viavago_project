@@ -58,6 +58,6 @@ public partial class NewTour : System.Web.UI.Page
     protected void Button1_OnClick(object sender, EventArgs e)
     {
         FileUpload uploader = new FileUpload();
-        Panel1.Controls.Add(uploader);
+        fupTourImage.Controls.Add(uploader);
     }
 }
