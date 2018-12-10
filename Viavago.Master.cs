@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
+using System.Web.Configuration;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Microsoft.AspNet.Identity;
@@ -33,8 +35,9 @@ public partial class Viavago : System.Web.UI.MasterPage
             //Instantiate a new UserManager object from the IdentityEF class that we imported.
             //This object represents a user of our application.
             //We set the Username property of the ApplicationUser to the text entered in the UserName textbox.
-            var user = new IdentityEF.ApplicationUser() { UserName = txtRegisterEmail.Value };
-
+            var user = new IdentityEF.ApplicationUser();
+            user.UserName = txtRegisterEmail.Value;
+            user.Email = txtRegisterEmail.Value;
 
             //Call the Create method of the UserManager to create a new record for this user.  
             //Pass in the ApplicationUser object and the password that was entered.
@@ -64,6 +67,31 @@ public partial class Viavago : System.Web.UI.MasterPage
             {
                 //Report any errors that may have occurred.
                 lblStatus.Text = result.Errors.FirstOrDefault();
+            }
+            //Connect to the 5050_Viavago database and insert the UserName into the Users table
+            string constring = WebConfigurationManager.ConnectionStrings["5050_Viavago"].ConnectionString;
+            SqlConnection con = new SqlConnection(constring);
+            string insertCommand = "INSERT INTO Users (UserName, FirstName, LastName) VALUES (@UserName, @FirstName, @LastName);";
+            SqlCommand cmd = new SqlCommand(insertCommand, con);
+            //attach parameter to command
+            SqlParameter param = cmd.CreateParameter();
+            param.ParameterName = "@UserName";
+            param.Value = txtRegisterEmail.Value;
+            cmd.Parameters.Add(param);
+            cmd.Parameters.AddWithValue("@FirstName", txtFirstName.Value);
+            cmd.Parameters.AddWithValue("@LastName", txtLastName.Value);
+            try
+            {
+                con.Open();
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception err)
+            {
+                lblStatus.Text += "Insert failed. " + err.Message;
+            }
+            finally
+            {
+                con.Close();
             }
         }
 
