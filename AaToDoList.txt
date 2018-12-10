@@ -22,3 +22,16 @@ GuideRegistration.aspx-INSERT
 Viavago.Master
 	links- Home, Browse Tours, Become a Guide, Contact us?
 Web.config
+
+Requirements
+1. 5 interlinked Web forms (.aspx pages) that display dynamic, database-driven content per team member. To be counted as dynamic, the page must retrieve information 
+to and/or write information to the application database using one or more queries written by the team. Pages that access the database only using pre-built ASP.NET 
+functionalities (such as the Identity service for logging in or creating accounts) do NOT count toward this requirement.
+2. At least 5 database transactions (a transaction includes selecting, inserting, updating, or deleting data from the database) per team member
+3. User/Role management for at least 2 roles
+4. Preservation of state (may include cookies, session state, application state, cross-page posting, or querystring)
+5. 10 different ‘basic’ ASP.NET Web controls (those that map directly to an html tag such as label, textbox, dropdownlist, etc.)
+6. 5 different ‘advanced’ ASP.NET Web controls (those that do not map directly to an html tag)
+7. Input validation for all free-form user entries that could potentially result in errors
+8. 1 user control
+9. 1 navigation control
