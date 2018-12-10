@@ -30,7 +30,42 @@
                                             <div class="dashboard-header fl-wrap">
                                                 <h3>Indox</h3>
                                             </div>
-                                            <!-- dashboard-list end-->    
+                                            <!-- dashboard-list end-->  
+                                             <!-------------  listview of current tours attending--------------->
+                                            <asp:SqlDataSource ID="SQLIndox" runat="server" ConnectionString='<%$ ConnectionStrings:5050_Viavago %>' SelectCommand="SELECT i.[TourID], [GuideID], [TourName], [Category], [Description], [Price], [NumberOfReviews], [AverageRating], [NumberOfLikes], [NumberOfViews], [MapiFrame], [StreetAddress], [City], [State], [Country], f.ImgURl 
+FROM [Tour_Information] as i JOIN Tour_Images as f 
+ON i.TourID = f.TourID 
+"></asp:SqlDataSource>
+                                            <div class="dashboard-list">
+                                                <asp:ListView ID="lvwIndox" runat="server" DataSourceID="SQLIndox">
+                                                    <LayoutTemplate>
+                                            <div class="dashboard-message">
+                                                    <div class="dashboard-listing-table-image">
+                                                        <%--<span class="new-dashboard-item">New</span>--%>
+                                                        <a href="listing-single.html"><img src='<%# Eval("ImgUrl") %>' alt=""></a>
+                                                    </div>
+                                                <div class="dashboard-listing-table-text">
+                                                    <div runat="server" id="itemPlaceHolder"></div>
+                                                        <ul class="dashboard-listing-table-opt  fl-wrap">
+                                                            <li><a href="#">Edit <i class="fa fa-pencil-square-o"></i></a></li>
+                                                            <li><a href="#" class="del-btn">Delete <i class="fa fa-trash-o"></i></a></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                    </LayoutTemplate>
+                                                    <ItemTemplate>
+                                                        <h4><a href="listing-single.html"></a></h4>
+                                                        <h4><a href="listing-single.html"><%# Eval("TourName") %></a></h4>
+                                                        <span class="dashboard-listing-table-address"><a  href="#"><%# Eval("StreetAddress") %>, <%# Eval("City") %>,</a></span>
+                                                      <span class="dashboard-listing-table-address"><a  href="#"><%# Eval("State") %>,<%# Eval("Country") %></a></span><div class="listing-rating card-popup-rainingvis fl-wrap" data-starrating2="5">
+                                                            <span>(2 reviews)</span>
+                                                        </div>
+                                                    </ItemTemplate>
+                                                </asp:ListView>    
+                                            </div>
+                                            <!-- dashboard-list end--> 
+
+
                                             <div class="dashboard-list">
                                                 <div class="dashboard-message">
                                                     <span class="new-dashboard-item">New</span>

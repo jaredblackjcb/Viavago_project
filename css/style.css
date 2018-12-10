@@ -1,4 +1,4 @@
-@charset "utf-8";
+﻿@charset "utf-8";
 /*======================================
  [ -Main Stylesheet-
   Theme: CityBook
@@ -792,7 +792,7 @@ section.parallax-section.small-par {
 	z-index:30;
 }
 section.parallax-section .bg {
-	height:120%;
+	height:100%;
 	top:0;
 }
 .section-title {
