@@ -33,26 +33,31 @@
                                 <div class="profile-edit-header fl-wrap">
                                     <h4>My Account</h4>
                                 </div>
+                                
+
                                 <!--Database Table Users --> 
                                 <div class="custom-form">
                                     <label>First Name <i class="fa fa-user-o"></i></label>
-                                    <input id="txtFirstName" runat="server" type="text" placeholder="Alisa" value="" />
+                                    <input id="txtFirstName" runat="server" type="text"  />
                                     <label>Last Name <i class="fa fa-user-o"></i></label>
-                                    <input id="txtLastName" runat="server" type="text" placeholder="Noory" value="" />
+                                    <input id="txtLastName" runat="server" type="text" />
                                     <label>Email Address<i class="fa fa-envelope-o"></i>  </label>
-                                    <input id="txtEmail" runat="server" type="text" placeholder="AlisaNoory@domain.com" value="" />
+                                    <input id="txtEmail" runat="server" type="text"   />
                                     <label>Phone<i class="fa fa-phone"></i>  </label>
-                                    <input id="txtPhone" runat="server" type="text" placeholder="123-987-6543" value="" />
+                                    <input id="txtPhone" runat="server" type="text" />
                                     <label>City<i class="fa fa-phone"></i>  </label>
-                                    <input id="txtCity" runat="server" type="text" placeholder="Riverdale" value="" />
+                                    <input id="txtCity" runat="server" type="text"  />
                                     <label>State<i class="fa fa-phone"></i>  </label>
-                                    <input id="txtState" runat="server" type="text" placeholder="TX" value="" />
+                                    <input id="txtState" runat="server" type="text"   />
                                     <label>Country<i class="fa fa-phone"></i>  </label>
-                                    <input id="txtCountry" runat="server" type="text" placeholder="USA" value="" />
+                                    <input id="txtCountry" runat="server" type="text"   />
                                     <label>About Me</label>
-                                    <asp:TextBox ID="txtAboutMe" runat="server" cols="40" Rows="3" placeholder="About Me"></asp:TextBox>
+                                    <asp:TextBox ID="txtAboutMe" runat="server" cols="40" Rows="3" ></asp:TextBox>
               <!-- How to connect this to be for only guides-->
                                 </div>
+
+                                
+
                             </div>
                             <!-- profile-edit-container end-->
                             
@@ -70,7 +75,8 @@
                         </div>
                         <div class="col-md-2">
                             <div class="edit-profile-photo fl-wrap">
-                                <img src="images/avatar/1.jpg" class="respimg" alt="">
+                                <%--<img runat="server" ID ="imgProfile" src="~/ProfileImages/" class="respimg" alt="">--%>
+                                <asp:Image ID="imgProfile" runat="server" />
                                 <br/>
                                 <asp:FileUpload ID="fupProfileImage" runat="server" />
 

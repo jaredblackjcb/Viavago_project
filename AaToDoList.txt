@@ -4,7 +4,9 @@ Bookings.aspx
 ChangePassword.aspx-INSERT
 Dashboard.aspx
 EditProfile.aspx-INSERT
+	??ExecuteReader: Connection property has not been initialized.
 Messages.aspx -JB
+	??problems with findcontrol method
 MyTours.aspx
 NewTour.aspx-INSERT
 Reviews.aspx
