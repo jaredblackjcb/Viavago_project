@@ -126,9 +126,10 @@ public partial class Viavago : System.Web.UI.MasterPage
             //Pass in the ClaimsIdentity object created above.
             authenticationManager.SignIn(new AuthenticationProperties() { IsPersistent = rememberme }, userIdentity);
 
+            
 
             //Redirect the user to the Profile page where they can add/modify additional profile variables.
-            Response.Redirect("~/Account/Profile.aspx");
+            Response.Redirect("~/EditProfile.aspx");
         }
         else
         {
@@ -148,4 +149,5 @@ public partial class Viavago : System.Web.UI.MasterPage
         //Refresh the login page to show the Login form
         Response.Redirect("~/Default.aspx");
     }
+
 }
