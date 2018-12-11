@@ -34,7 +34,7 @@
                                                 <h3>Inbox</h3>
                                             </div>
                                             
-                                            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString='<%$ ConnectionStrings:5050_Viavago %>' SelectCommand="SELECT [MessageID], [SenderID], [ReceiverID], [Message], [Date], [MessageStatus] FROM [Messages] WHERE ([ReceiverID] = @ReceiverID)">
+                                            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString='<%$ ConnectionStrings:5050_Viavago %>' SelectCommand="SELECT FirstName + ' ' + LastName AS SenderFullName, [MessageID], [SenderID], [ReceiverID], [Message], [Date], [MessageStatus] FROM [Messages] m JOIN Users u ON m.SenderID = u.UserID WHERE ([ReceiverID] = @ReceiverID)">
                                                 <SelectParameters>
                                                     <asp:SessionParameter SessionField="UserId" Name="ReceiverID" Type="Int32"></asp:SessionParameter>
                                                 </SelectParameters>
@@ -54,7 +54,7 @@
                                                             <img src='<%#Eval("ProfileImg","~/ProfileImages/{0}") %>' alt="">
                                                         </div>
                                                         <div class="dashboard-message-text">
-                                                            <h4>Andy Smith - <span><%#Eval("Date") %></span></h4>
+                                                            <h4><%#Eval("SenderFullName") %> - <span><%#Eval("Date") %></span></h4>
                                                             <p><%#Eval("Message") %> </p>
                                                             <span class="reply-mail clearfix">Reply : <a  class="dashboard-message-user-mail" href="mailto:yourmail@domain.com" target="_top">yourmail@domain.com</a></span>	
                                                         </div>

@@ -105,7 +105,7 @@ public partial class Viavago : System.Web.UI.MasterPage
                 Session["UserId"] = (Int32)table.Rows[0]["UserId"];
             }
         }
-
+        SignIn(sender, e);
     }
     //Method to authenticate a user
     protected void SignIn(object sender, EventArgs e)
