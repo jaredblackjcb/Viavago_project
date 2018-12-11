@@ -6,6 +6,7 @@
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="cphHead" Runat="Server">
+
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cphContent" Runat="Server">
     
@@ -30,80 +31,38 @@
                                     <div class="col-md-9">
                                         <div class="dashboard-list-box fl-wrap">
                                             <div class="dashboard-header fl-wrap">
-                                                <h3>Indox</h3>
+                                                <h3>Inbox</h3>
                                             </div>
-                                            <!-- dashboard-list end-->    
-                                            <div class="dashboard-list">
-                                                <div class="dashboard-message">
-                                                    <span class="new-dashboard-item">New</span>
-                                                    <div class="dashboard-message-avatar">
-                                                        <img src="images/avatar/1.jpg" alt="">
+                                            
+                                            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString='<%$ ConnectionStrings:5050_Viavago %>' SelectCommand="SELECT [MessageID], [SenderID], [ReceiverID], [Message], [Date], [MessageStatus] FROM [Messages] WHERE ([ReceiverID] = @ReceiverID)">
+                                                <SelectParameters>
+                                                    <asp:SessionParameter SessionField="UserId" Name="ReceiverID" Type="Int32"></asp:SessionParameter>
+                                                </SelectParameters>
+                                            </asp:SqlDataSource>
+                                            <asp:ListView ID="ListView1" runat="server">
+                                                <LayoutTemplate>
+                                                    <!-- dashboard-list end-->    
+                                                    <div class="dashboard-list">
+                                                        <div class="ItemPlaceHolder"></div>
                                                     </div>
-                                                    <div class="dashboard-message-text">
-                                                        <h4>Andy Smith - <span>27 December 2018</span></h4>
-                                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc posuere convallis purus non cursus. Cras metus neque, gravida sodales massa ut. </p>
-                                                        <span class="reply-mail clearfix">Reply : <a  class="dashboard-message-user-mail" href="mailto:yourmail@domain.com" target="_top">yourmail@domain.com</a></span>	
+                                                    <!-- dashboard-list end-->    
+                                                </LayoutTemplate>
+                                                <ItemTemplate>
+                                                    <div class="dashboard-message">
+                                                        <%--<span class="new-dashboard-item">New</span>--%>
+                                                        <div class="dashboard-message-avatar">
+                                                            <img src='<%#Eval("ProfileImg","~/ProfileImages/{0}") %>' alt="">
+                                                        </div>
+                                                        <div class="dashboard-message-text">
+                                                            <h4>Andy Smith - <span><%#Eval("Date") %></span></h4>
+                                                            <p><%#Eval("Message") %> </p>
+                                                            <span class="reply-mail clearfix">Reply : <a  class="dashboard-message-user-mail" href="mailto:yourmail@domain.com" target="_top">yourmail@domain.com</a></span>	
+                                                        </div>
                                                     </div>
-                                                </div>
-                                            </div>
-                                            <!-- dashboard-list end-->    
-                                            <!-- dashboard-list end-->    
-                                            <div class="dashboard-list">
-                                                <div class="dashboard-message">
-                                                    <span class="new-dashboard-item">New</span>
-                                                    <div class="dashboard-message-avatar">
-                                                        <img src="images/avatar/avatar-bg.png" alt="">
-                                                    </div>
-                                                    <div class="dashboard-message-text">
-                                                        <h4>Andy Smith - <span>27 December 2018</span></h4>
-                                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc posuere convallis purus non cursus. Cras metus neque, gravida sodales massa ut. </p>
-                                                        <span class="reply-mail clearfix">Reply : <a  class="dashboard-message-user-mail" href="mailto:yourmail@domain.com" target="_top">yourmail@domain.com</a></span>	
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- dashboard-list end-->                                            
-                                            <!-- dashboard-list end-->    
-                                            <div class="dashboard-list">
-                                                <div class="dashboard-message">
-                                                    <div class="dashboard-message-avatar">
-                                                        <img src="images/avatar/1.jpg" alt="">
-                                                    </div>
-                                                    <div class="dashboard-message-text">
-                                                        <h4>Andy Smith - <span>27 December 2018</span></h4>
-                                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc posuere convallis purus non cursus. Cras metus neque, gravida sodales massa ut. </p>
-                                                        <span class="reply-mail clearfix">Reply : <a  class="dashboard-message-user-mail" href="mailto:yourmail@domain.com" target="_top">yourmail@domain.com</a></span>	
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- dashboard-list end-->                                             
-                                            <!-- dashboard-list end-->    
-                                            <div class="dashboard-list">
-                                                <div class="dashboard-message">
-                                                    <div class="dashboard-message-avatar">
-                                                        <img src="images/avatar/avatar-bg.png" alt="">
-                                                    </div>
-                                                    <div class="dashboard-message-text">
-                                                        <h4>Andy Smith - <span>27 December 2018</span></h4>
-                                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc posuere convallis purus non cursus. Cras metus neque, gravida sodales massa ut. </p>
-                                                        <span class="reply-mail clearfix">Reply : <a  class="dashboard-message-user-mail" href="mailto:yourmail@domain.com" target="_top">yourmail@domain.com</a></span>	
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- dashboard-list end-->                                            
-                                            <!-- dashboard-list end-->    
-                                            <div class="dashboard-list">
-                                                <div class="dashboard-message">
-                                                    <div class="dashboard-message-avatar">
-                                                        <img src="images/avatar/1.jpg" alt="">
-                                                    </div>
-                                                    <div class="dashboard-message-text">
-                                                        <h4>Andy Smith - <span>27 December 2018</span></h4>
-                                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc posuere convallis purus non cursus. Cras metus neque, gravida sodales massa ut. </p>
-                                                        <span class="reply-mail clearfix">Reply : <a  class="dashboard-message-user-mail" href="mailto:yourmail@domain.com" target="_top">yourmail@domain.com</a></span>	
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- dashboard-list end--> 
+                                                </ItemTemplate>
+                                            </asp:ListView>
+
+
                                         </div>
                                         <!-- pagination-->
                                         <div class="pagination">
