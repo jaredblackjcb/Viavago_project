@@ -17,7 +17,7 @@
                 <div class="profile-edit-wrap">
                     <div class="profile-edit-page-header">
                         <h2>Add Listing</h2>
-                        <div class="breadcrumbs"><a href="#">Home</a><a href="#">Dashboard</a><span>Add Listing</span></div>
+                        <a href="TourDetail.aspx">TourDetail.aspx</a>
                     </div>
                     <div class="row">
                         <div class="col-md-3">

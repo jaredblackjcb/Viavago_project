@@ -1,6 +1,8 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Viavago.Master" AutoEventWireup="true" CodeFile="Bookings.aspx.cs" Inherits="Bookings" %>
 
 <%@ Register Src="~/DashboardLinks.ascx" TagPrefix="uc1" TagName="DashboardLinks" %>
+<%@ Register Src="~/ToolbarHeader.ascx" TagPrefix="uc1" TagName="ToolbarHeader" %>
+
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="cphHead" Runat="Server">
@@ -17,7 +19,7 @@
                             <div class="profile-edit-wrap">
                                 <div class="profile-edit-page-header">
                                     <h2>Bookings</h2>
-                                    <div class="breadcrumbs"><a href="#">Home</a><a href="#">Dasboard</a><span>Bookings</span></div>
+                                    <uc1:ToolbarHeader runat="server" ID="ToolbarHeader" />
                                 </div>
                                 <div class="row">
                                     <div class="col-md-3">
