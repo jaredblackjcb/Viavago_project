@@ -12,6 +12,7 @@
     
                     <!--content -->  
                 <div class="content">
+                    <asp:Label ID="txtStatus" runat="server" Text="Session variables: "></asp:Label>
                     <!--section --> 
                     <section id="sec1">
                         <!-- container -->
@@ -33,22 +34,21 @@
                                             <div class="dashboard-header fl-wrap">
                                                 <h3>Inbox</h3>
                                             </div>
-                                            
-                                            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString='<%$ ConnectionStrings:5050_Viavago %>' SelectCommand="SELECT FirstName + ' ' + LastName AS SenderFullName, [MessageID], [SenderID], [ReceiverID], [Message], [Date], [MessageStatus] FROM [Messages] m JOIN Users u ON m.SenderID = u.UserID WHERE ([ReceiverID] = @ReceiverID)">
+                                        <div class="dashboard-list">
+                                            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString='<%$ ConnectionStrings:5050_Viavago %>' SelectCommand="SELECT FirstName + ' ' + LastName AS SenderFullName, ProfileImg, UserID, [MessageID], [SenderID], [ReceiverID], [Message], [Date], [MessageRead] FROM [Messages] m JOIN Users u ON m.SenderID = u.UserID WHERE ([ReceiverID] = @ReceiverID)">
                                                 <SelectParameters>
                                                     <asp:SessionParameter SessionField="UserId" Name="ReceiverID" Type="Int32"></asp:SessionParameter>
                                                 </SelectParameters>
                                             </asp:SqlDataSource>
-                                            <asp:ListView ID="ListView1" runat="server">
+                                            <asp:ListView ID="lvwInbox" runat="server" DataSourceID="SqlDataSource1" DataKeyNames="UserID">
                                                 <LayoutTemplate>
                                                     <!-- dashboard-list end-->    
-                                                    <div class="dashboard-list">
-                                                        <div class="ItemPlaceHolder"></div>
+                                                    <div class="dashboard-message">
+                                                        <div runat="server" ID="ItemPlaceholder"></div>
+                                                    <!-- dashboard-list end-->   
                                                     </div>
-                                                    <!-- dashboard-list end-->    
                                                 </LayoutTemplate>
                                                 <ItemTemplate>
-                                                    <div class="dashboard-message">
                                                         <%--<span class="new-dashboard-item">New</span>--%>
                                                         <div class="dashboard-message-avatar">
                                                             <img src='<%#Eval("ProfileImg","~/ProfileImages/{0}") %>' alt="">
@@ -56,11 +56,16 @@
                                                         <div class="dashboard-message-text">
                                                             <h4><%#Eval("SenderFullName") %> - <span><%#Eval("Date") %></span></h4>
                                                             <p><%#Eval("Message") %> </p>
-                                                            <span class="reply-mail clearfix">Reply : <a  class="dashboard-message-user-mail" href="mailto:yourmail@domain.com" target="_top">yourmail@domain.com</a></span>	
+                                                            <asp:Button ID="btnReply" runat="server" Text="Reply" OnClick="btnReply_OnClick" />
+                                                            <br/><br/>
+                                                            <asp:TextBox ID="txtReply" runat="server" Columns="20" Rows="5" Visible="True"></asp:TextBox>
+                                                            <asp:Button ID="btnSend" runat="server" Text="Send" OnClick="btnSend_OnClick" />
                                                         </div>
-                                                    </div>
+
                                                 </ItemTemplate>
                                             </asp:ListView>
+                                        </div>
+
 
 
                                         </div>
