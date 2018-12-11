@@ -1,5 +1,8 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Viavago.Master" AutoEventWireup="true" CodeFile="Tours.aspx.cs" Inherits="Tours" %>
 
+<%@ Register Src="~/ToolbarHeader.ascx" TagPrefix="uc1" TagName="ToolbarHeader" %>
+
+
 <asp:Content ID="Content1" ContentPlaceHolderID="cphHead" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cphContent" Runat="Server">
@@ -35,6 +38,9 @@
                                                 <option>Queens</option>
                                                 <option>Staten Island</option>
                                             </select>
+                                        </div>
+                                        <div>
+                                            <uc1:ToolbarHeader runat="server" ID="ToolbarHeader" />
                                         </div>
                                         <div>
                                             <asp:LoginView ID="LoginView1" runat="server">
@@ -102,7 +108,7 @@
                                                 <div class="list-post-counter"><span><%# Eval("NumberofReviews") %></span><i class="fa fa-heart"></i></div>
                                             </div>
                                             <div class="geodir-category-content fl-wrap">
-                                                <a class="listing-geodir-category" href="TourDetail.aspx">Go Here!</a>
+                                                <a class="listing-geodir-category" href="TourDetail.aspx?tourid=<%# Eval("TourID") %>">Go Here!</a>
                                                 <div class="listing-avatar"><a href="author-single.html"><img src="<%# Eval("ImgUrl") %>" alt=""></a>
                                                     <span class="avatar-tooltip">Added By:  <strong><%# Eval("TourName") %></strong></span>
                                                 </div>
