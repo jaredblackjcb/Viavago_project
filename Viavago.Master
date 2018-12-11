@@ -8,10 +8,10 @@
     <meta charset="UTF-8">
     <title>Citybook -Directory Listing Template</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta name="robots" content="index, follow"/>
-    <meta name="keywords" content=""/>
-    <meta name="description" content=""/>
-    <!--=============== css  ===============-->	
+    <meta name="robots" content="index, follow" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <!--=============== css  ===============-->
     <link type="text/css" rel="stylesheet" href="css/reset.css">
     <link type="text/css" rel="stylesheet" href="css/plugins.css">
     <link type="text/css" rel="stylesheet" href="css/style.css">
@@ -36,20 +36,21 @@
                 <div class="pin"></div>
                 <div class="pulse"></div>
             </div>
-                        <!-- header-->
+            <!-- header-->
             <header class="main-header dark-header fs-header sticky">
                 <div class="header-inner">
                     <asp:Label ID="lblStatus" runat="server" Text="Status label" ForeColor="White"></asp:Label>
 
                     <div class="logo-holder">
-                        <a href="Default.aspx"><img src="images/logo.png" alt=""></a>
+                        <a href="Default.aspx">
+                            <img src="images/logo.png" alt=""></a>
                     </div>
                     <div class="header-search vis-header-search">
                         <div class="header-search-input-item">
-                            <input type="text" placeholder="Keywords" value=""/>
+                            <input type="text" placeholder="Keywords" value="" />
                         </div>
                         <div class="header-search-select-item">
-                            <select data-placeholder="All Categories" class="chosen-select" >
+                            <select data-placeholder="All Categories" class="chosen-select">
                                 <option>All Categories</option>
                                 <option>Outdoors</option>
                                 <option>Indoors</option>
@@ -57,82 +58,114 @@
                                 <option>Vivago Favorites</option>
                             </select>
                         </div>
-                        <asp:button runat="server" class="header-search-button" PostbackURl="~/Tours.aspx" Text="Search"></asp:button>
+                        <asp:Button runat="server" class="header-search-button" PostBackUrl="~/Tours.aspx" Text="Search"></asp:Button>
                     </div>
-                    <div class="show-search-button"><i class="fa fa-search"></i> <span>Search</span></div>
+                    <div class="show-search-button"><i class="fa fa-search"></i><span>Search</span></div>
                     <a href="dashboard-add-listing.html" class="add-list">Add Listing <span><i class="fa fa-plus"></i></span></a>
-                    <div class="show-reg-form modal-open"><i class="fa fa-sign-in"></i><%--<asp:LoginStatus ID="LoginStatus1" runat="server" />--%>Sign In</div>
-                    <!-- nav-button-wrap--> 
+                    <asp:LoginView ID="LoginView1" runat="server">
+                        <AnonymousTemplate>
+                            <div class="show-reg-form modal-open">
+                                Sign In <i class="fa fa-sign-in"></i>
+
+                            </div>
+                        </AnonymousTemplate>
+                    </asp:LoginView>
+
+                    <!-- nav-button-wrap-->
                     <div class="nav-button-wrap color-bg">
                         <div class="nav-button">
                             <span></span><span></span><span></span>
                         </div>
                     </div>
                     <!-- nav-button-wrap end-->
-                    <!--  navigation --> 
+                    <!--  navigation -->
                     <div class="nav-holder main-menu">
                         <nav>
                             <ul>
                                 <li>
                                     <a href="Default.aspx">Home</a>
-                                    
+
                                 </li>
                                 <li>
                                     <a href="Tours.aspx">Browse Tours</a>
-                                 </li>   
+                                </li>
                                 
-</header>
-        <div id ="wrapper">
-  
-            <asp:ContentPlaceHolder ID="cphContent" runat="server">
-                
+                                <asp:LoginView ID="LoginView2" runat="server">
+                                    
+                                    <LoggedInTemplate>
+                                        <li>
+                                            <a href="#">Welcome
+                                            <asp:LoginName ID="LoginName1" runat="server" />
+                                                <i class="fa fa-caret-down"></i></a>
+                                            <!--second level -->
+                                            <ul>
+                                                <li><a href="Dashboard.aspx">Dashboard</a></li>
+                                                <li><a href="Messages.aspx">Messages</a></li>
+                                                <li><a href="EditProfile.aspx">Edit Profile</a></li>
+                                                <%--<li><a href="Profile.aspx">View Profile</a></li>--%>
+                                                <%--                                                <li><a href="">Log Out</a></li>--%>
+                                            </ul>
+                                            <!--second level end-->
+                                        </li>
+                                        <li>
+                                            <asp:LoginStatus ID="LoginStatus1" runat="server" OnLoggingOut="SignOut" />
+                                        </li>
 
-            </asp:ContentPlaceHolder>
-        </div>
-        <%--wrapper end--%>
+                                    </LoggedInTemplate>
+                                </asp:LoginView>
+                            </ul>
+                        </nav>
+                    </div>
+            </header>
+            <div id="wrapper">
 
-                        <!--footer -->
-                <footer class="sub-footer fl-wrap">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-4">
-                                <div class="about-widget">
-                                    <img src="images/logo.png" alt="">
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="copyright"> &#169; CityBook 2018 .  All rights reserved.</div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="footer-social">
-                                    <ul>
-                                        <li><a href="#" target="_blank" ><i class="fa fa-facebook-official"></i></a></li>
-                                        <li><a href="#" target="_blank"><i class="fa fa-twitter"></i></a></li>
-                                        <li><a href="#" target="_blank" ><i class="fa fa-chrome"></i></a></li>
-                                        <li><a href="#" target="_blank" ><i class="fa fa-vk"></i></a></li>
-                                        <li><a href="#" target="_blank" ><i class="fa fa-whatsapp"></i></a></li>
-                                    </ul>
-                                </div>
+                <asp:ContentPlaceHolder ID="cphContent" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
+            <%--wrapper end--%>
 
-                                    <ul  class="footer-contacts fl-wrap">
-                                        <li><span><i class="fa fa-envelope-o"></i> Mail :</span><a href="#" target="_blank">Viavagohelp@viavagotravel.com</a></li>
-                                        <li> <span><i class="fa fa-map-marker"></i> Adress :</span><a href="#" target="_blank">USA, 27TH Brooklyn NY</a></li>
-                                        <li><span><i class="fa fa-phone"></i> Phone :</span><a href="#">+8(435)565-4565</a></li>
-                                    </ul>
-
+            <!--footer -->
+            <footer class="sub-footer fl-wrap">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="about-widget">
+                                <img src="images/logo.png" alt="">
                             </div>
                         </div>
+                        <div class="col-md-4">
+                            <div class="copyright">&#169; CityBook 2018 .  All rights reserved.</div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="footer-social">
+                                <ul>
+                                    <li><a href="#" target="_blank"><i class="fa fa-facebook-official"></i></a></li>
+                                    <li><a href="#" target="_blank"><i class="fa fa-twitter"></i></a></li>
+                                    <li><a href="#" target="_blank"><i class="fa fa-chrome"></i></a></li>
+                                    <li><a href="#" target="_blank"><i class="fa fa-vk"></i></a></li>
+                                    <li><a href="#" target="_blank"><i class="fa fa-whatsapp"></i></a></li>
+                                </ul>
+                            </div>
+
+                            <ul class="footer-contacts fl-wrap">
+                                <li><span><i class="fa fa-envelope-o"></i>Mail :</span><a href="#" target="_blank">Viavagohelp@viavagotravel.com</a></li>
+                                <li><span><i class="fa fa-map-marker"></i>Adress :</span><a href="#" target="_blank">USA, 27TH Brooklyn NY</a></li>
+                                <li><span><i class="fa fa-phone"></i>Phone :</span><a href="#">+8(435)565-4565</a></li>
+                            </ul>
+
+                        </div>
                     </div>
-                </footer>
+                </div>
+            </footer>
             <!--footer end  -->
-                        <!--register form -->
+            <!--register form -->
             <div class="main-register-wrap modal">
                 <div class="main-overlay"></div>
                 <div class="main-register-holder">
                     <div class="main-register fl-wrap">
                         <div class="close-reg"><i class="fa fa-times"></i></div>
                         <h3>Sign In <span>City<strong>Book</strong></span></h3>
-<%--                        <div class="soc-log fl-wrap">
+                        <%--                        <div class="soc-log fl-wrap">
                             <p>For faster login or register use your social account.</p>
                             <a href="#" class="facebook-log"><i class="fa fa-facebook-official"></i>Log in with Facebook</a>
                             <a href="#" class="twitter-log"><i class="fa fa-twitter"></i> Log in with Twitter</a>
@@ -146,12 +179,12 @@
                             <div class="tab">
                                 <div id="tab-1" class="tab-content">
                                     <div class="custom-form">
-                                        <div method="post"  name="registerform">
+                                        <div method="post" name="registerform">
                                             <label>Username or Email Address * </label>
-                                            <input runat="server" ID="txtLoginEmail" type="text" >
-                                            <label >Password * </label>
-                                            <input runat="server" ID="txtLoginPassword" type="password"  > 
-                                            <button runat="server" ID="btnLogin" type="submit"  class="log-submit-btn"><span>Log In</span></button> 
+                                            <input runat="server" id="txtLoginEmail" type="text">
+                                            <label>Password * </label>
+                                            <input runat="server" id="txtLoginPassword" type="password">
+                                            <button runat="server" id="btnLogin" type="submit" class="log-submit-btn" OnServerClick="SignIn"><span>Log In</span></button>
                                             <div class="clearfix"></div>
                                             <div class="filter-tags">
                                                 <input runat="server" id="chkRememberMe" type="checkbox" name="check">
@@ -166,18 +199,18 @@
                                 <div class="tab">
                                     <div id="tab-2" class="tab-content">
                                         <div class="custom-form">
-                                            <div method="post"   name="registerform" class="main-register-form" id="main-register-form2">
-                                                <label >First Name * </label>
-                                                <input runat="server" ID="txtFirstName" type="text"> 
+                                            <div method="post" name="registerform" class="main-register-form" id="main-register-form2">
+                                                <label>First Name * </label>
+                                                <input runat="server" id="txtFirstName" type="text">
                                                 <label>Last Name *</label>
-                                                <input runat="server" ID="txtLastName" type="text" >
+                                                <input runat="server" id="txtLastName" type="text">
                                                 <label>Email Address *</label>
-                                                <input runat="server" ID="txtRegisterEmail" type="text" >                                              
-                                                <label >Password *</label>
-                                                <input runat="server" ID="txtRegisterPassword" type="password" > 
-                                                <label >Confirm Password *</label>
-                                                <input runat="server" ID="txtConfirmPassword" type="password" > 
-                                                <button runat="server" type="submit" ID="btnRegister" class="log-submit-btn" OnServerClick="CreateUser_Click" ><span>Register</span></button> 
+                                                <input runat="server" id="txtRegisterEmail" type="text">
+                                                <label>Password *</label>
+                                                <input runat="server" id="txtRegisterPassword" type="password">
+                                                <label>Confirm Password *</label>
+                                                <input runat="server" id="txtConfirmPassword" type="password">
+                                                <button runat="server" type="submit" id="btnRegister" class="log-submit-btn" onserverclick="CreateUser_Click"><span>Register</span></button>
                                             </div>
                                         </div>
                                     </div>
@@ -198,9 +231,9 @@
         <script type="text/javascript" src="js/scripts.js"></script>
         <script src="https://maps.googleapis.com/maps/api/js?key=YOURAPIKEYHERE&libraries=places&callback=initAutocomplete"></script>
 
-        
-        
-        
+
+
+
     </form>
 </body>
 </html>

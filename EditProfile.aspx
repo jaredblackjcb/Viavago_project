@@ -49,15 +49,9 @@
                                     <input id="txtState" runat="server" type="text" placeholder="TX" value="" />
                                     <label>Country<i class="fa fa-phone"></i>  </label>
                                     <input id="txtCountry" runat="server" type="text" placeholder="USA" value="" />
+                                    <label>About Me</label>
+                                    <asp:TextBox ID="txtAboutMe" runat="server" cols="40" Rows="3" placeholder="About Me"></asp:TextBox>
               <!-- How to connect this to be for only guides-->
-                                    <asp:LoginView ID="LoginView1" runat="server">
-                                        <AnonymousTemplate>
-                                        </AnonymousTemplate>
-                                        <LoggedInTemplate>
-                                            <label>About Me</label>
-                                            <asp:TextBox ID="txtAboutMe" runat="server" cols="40" Rows="3" placeholder="About Me"></asp:TextBox>
-                                        </LoggedInTemplate>
-                                    </asp:LoginView>
                                 </div>
                             </div>
                             <!-- profile-edit-container end-->
@@ -77,12 +71,15 @@
                         <div class="col-md-2">
                             <div class="edit-profile-photo fl-wrap">
                                 <img src="images/avatar/1.jpg" class="respimg" alt="">
-                                <div class="change-photo-btn">
+                                <br/>
+                                <asp:FileUpload ID="fupProfileImage" runat="server" />
+
+                                <%--<div class="change-photo-btn">
                                     <div class="photoUpload">
                                         <span><i class="fa fa-upload"></i>Upload Photo</span>
                                         <input type="file" class="upload">
                                     </div>
-                                </div>
+                                </div>--%>
                             </div>
                         </div>
                     </div>

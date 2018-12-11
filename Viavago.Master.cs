@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
@@ -16,12 +17,7 @@ public partial class Viavago : System.Web.UI.MasterPage
     {
 
     }
-    protected void btnRegister_OnServerClick(object sender, EventArgs e)
-    {
-        {
 
-        }
-    }
     protected void CreateUser_Click(object sender, EventArgs e)
     {
 
@@ -80,18 +76,33 @@ public partial class Viavago : System.Web.UI.MasterPage
             cmd.Parameters.Add(param);
             cmd.Parameters.AddWithValue("@FirstName", txtFirstName.Value);
             cmd.Parameters.AddWithValue("@LastName", txtLastName.Value);
+            string selectCommand = "SELECT UserId FROM Users WHERE UserName = @UserName;";
+            SqlCommand cmdSelect = new SqlCommand(selectCommand, con);
+            cmdSelect.Parameters.AddWithValue("@UserName", txtRegisterEmail.Value);
+            DataTable table = new DataTable();
+
+
             try
             {
                 con.Open();
                 cmd.ExecuteNonQuery();
+                SqlDataReader reader = cmdSelect.ExecuteReader();
+                table.Load(reader);
+
+                
             }
             catch (Exception err)
             {
-                lblStatus.Text += "Insert failed. " + err.Message;
+                lblStatus.Text += "Command failed. " + err.Message;
             }
             finally
             {
                 con.Close();
+            }
+
+            if (table.Rows.Count > 0)
+            {
+                Session["UserId"] = (Int32)table.Rows[0]["UserId"];
             }
         }
 
@@ -126,9 +137,10 @@ public partial class Viavago : System.Web.UI.MasterPage
             //Pass in the ClaimsIdentity object created above.
             authenticationManager.SignIn(new AuthenticationProperties() { IsPersistent = rememberme }, userIdentity);
 
+            
 
             //Redirect the user to the Profile page where they can add/modify additional profile variables.
-            Response.Redirect("~/Account/Profile.aspx");
+            Response.Redirect("~/EditProfile.aspx");
         }
         else
         {
@@ -148,4 +160,5 @@ public partial class Viavago : System.Web.UI.MasterPage
         //Refresh the login page to show the Login form
         Response.Redirect("~/Default.aspx");
     }
+
 }
