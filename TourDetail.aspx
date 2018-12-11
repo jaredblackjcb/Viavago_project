@@ -1,38 +1,60 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Viavago.Master" AutoEventWireup="true" CodeFile="TourDetail.aspx.cs" Inherits="TourDetail" %>
 
+<%@ Register Src="~/ToolbarHeader.ascx" TagPrefix="uc1" TagName="ToolbarHeader" %>
+
+
 <asp:Content ID="Content1" ContentPlaceHolderID="cphHead" runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cphContent" runat="Server">
-
+    
     <!--  content  -->
     <div class="content">
         <!--  section  -->
 
-        <section class="parallax-section single-par list-single-section" data-scrollax-parent="true" id="sec1">
-            <div class="bg par-elem " data-bg="images/bg/1.jpg" data-scrollax="properties: { translateY: '30%' }"></div>
-            <%--                        <div class="overlay"></div>
-                        <div class="bubble-bg"></div>--%>
+        <asp:SqlDataSource ID="SqlTourInformation" runat="server" ConnectionString='<%$ ConnectionStrings:5050_Viavago %>' SelectCommand="SELECT t.[TourID], t.[GuideID], t.[TourName], t.[Category], [Description], [Price], t.[NumberOfReviews], [AverageRating], [NumberOfLikes], [NumberOfViews], [MapiFrame], t.[StreetAddress], t.[City], t.[State], t.[Country], Detail, Review, Rating, TourDate, ReviewID, u.UserID, FirstName, LastName, ProfileImg, AboutMe, GuideRating, AboutGuide
+ FROM [Tour_Information] as t JOIN Tour_Details as d 
+ON t.TourID = d.TourID
+JOIN Bookings as b
+ON b.TourID = d.TourID
+JOIN Reviews as r 
+ON r.BookingID = b.BookingID
+JOIN Users as u 
+ON u.UserID = b.UserID
+JOIN Guides as g
+ON g.UserID = g.UserID
+WHERE t.tourID = @tourID">
+            <SelectParameters>
+                <asp:QueryStringParameter QueryStringField="tourId" Type="int64" DefaultValue="" Name="tourID"></asp:QueryStringParameter>
+            </SelectParameters>
+        </asp:SqlDataSource>
 
-            <asp:ListView ID="lvwTourHead" runat="server">
-                <LayoutTemplate>
+        <%-------------------------------------Top Picture Area----------------------------%>
+
+        <section class="parallax-section single-par list-single-section" data-scrollax-parent="true" id="sec1">
+            <asp:ListView ID="ListView1" runat="server" DataSourceID="SqlTourInformation">
+            <ItemTemplate>
+
+                 <div class="bg par-elem " data-bg="<%# Eval("ImgUrl") %>" data-scrollax="properties: { translateY: '30%' }"></div>
+                                   <div class="overlay"></div>
+                       
+
+            
                     <div class="list-single-header absolute-header fl-wrap">
                         <div class="container">
                             <div runat="server" id="itemPlaceHolder"></div>
                         </div>
                     </div>
-                </LayoutTemplate>
-
-                <ItemTemplate>
+               
                     <div class="list-single-header-item">
 
-                        <h2>Luxury Restourant <span>- Hosted By </span><a href="author-single.html">Alisa Noory</a> </h2>
+                        <h2>Alisa Noory</a> </h2>
                         <span class="section-separator"></span>
                         <div class="listing-rating card-popup-rainingvis" data-starrating2="5">
                             <span>(11 reviews)</span>
                         </div>
                         <div class="list-post-counter single-list-post-counter"><span>4</span><i class="fa fa-heart"></i></div>
                         <div class="clearfix"></div>
-                        <%--                                    <div class="row">
+                                                            <div class="row">
                                         <div class="col-md-6">
                                             <div class="list-single-header-contacts fl-wrap">
                                                 <ul>
@@ -52,13 +74,20 @@
                                                 <a class="custom-scroll-link" href="#sec5"><i class="fa fa-hand-o-right"></i>Add Review </a>
                                             </div>
                                         </div>
-                                    </div>--%>
+                                    </div>
                     </div>
 
-                </ItemTemplate>
-            </asp:ListView>
+            </ItemTemplate>
+
+
+        </asp:ListView>
+        
+        
+           
+
+               
         </section>
-        <!--  section end -->
+        <!-----------------------------------------------  section end ------------------------------------------------->
         <div class="scroll-nav-wrapper fl-wrap">
             <div class="container">
                 <nav class="scroll-nav scroll-init">
@@ -69,29 +98,34 @@
                         <li><a href="#sec4">Reviews</a></li>
                     </ul>
                 </nav>
-                <a href="#" class="save-btn"><i class="fa fa-heart"></i>Save </a>
+                
             </div>
         </div>
-        <!--  section  -->
+        <!---------------------------------------  section 1  ---------------------------------->
+
+          
+        
         <section class="gray-section no-top-padding">
             <div class="container">
                 <div class="row">
                     <div class="col-md-8">
                         <div class="list-single-main-wrapper fl-wrap" id="sec2">
-                            <div class="breadcrumbs gradient-bg  fl-wrap"><a href="#">Home</a><a href="#">Listings</a><span>Listing Single</span></div>
+<%--                            <div class="breadcrumbs gradient-bg  fl-wrap"><a href="#">Home</a><a href="#">Listings</a><span>Listing Single</span></div>--%>
+                            <uc1:ToolbarHeader runat="server" ID="ToolbarHeader" />
+                            
+                            
                             <div class="list-single-main-item fl-wrap">
                                 <div class="list-single-main-item-title fl-wrap">
-                                    <h3>About Restourant </h3>
+                                    <h3>About <%# Eval("TourName") %>: </h3>
                                 </div>
-                                <p>Ut euismod ultricies sollicitudin. Curabitur sed dapibus nulla. Nulla eget iaculis lectus. Mauris ac maximus neque. Nam in mauris quis libero sodales eleifend. Morbi varius, nulla sit amet rutrum elementum, est elit finibus tellus, ut tristique elit risus at metus.</p>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in pulvinar neque. Nulla finibus lobortis pulvinar. Donec a consectetur nulla. Nulla posuere sapien vitae lectus suscipit, et pulvinar nisi tincidunt. Aliquam erat volutpat. Curabitur convallis fringilla diam sed aliquam. Sed tempor iaculis massa faucibus feugiat. In fermentum facilisis massa, a consequat purus viverra.</p>
+                                <p><%# Eval("Description") %></p>
                                 <span class="fw-separator"></span>
                                 <div class="list-single-main-item-title fl-wrap">
                                     <h3>Included With Tour: </h3>
                                 </div>
                                 <div class="listing-features fl-wrap">
                                     <ul>
-                                        <li><i class="fa fa-rocket"></i>Elevator in building</li>
+                                        <li><i class="fa fa-rocket"></i>Happy Faces!</li>
                                     </ul>
                                 </div>
                                 <%--                                            <span class="fw-separator"></span>
@@ -133,7 +167,7 @@
                                     <div class="gallery-item">
                                         <div class="grid-item-holder">
                                             <div class="box-item">
-                                                <img src="images/all/single/1.jpg" alt="">
+                                                <img src='<%# Eval("imgUrl") %>' alt="">
                                                 <a href="images/all/single/1.jpg" class="gal-link popup-image"><i class="fa fa-search"></i></a>
                                             </div>
                                         </div>
@@ -144,22 +178,20 @@
                             </div>
                             <!-- list-single-main-item end -->
                             <!-- list-single-main-item -->
+                            
                             <div class="list-single-main-item fl-wrap" id="sec4">
                                 <div class="list-single-main-item-title fl-wrap">
-                                    <h3>Item Revies -  <span>3 </span></h3>
+                                    <h3>Tour Reviews</h3>
                                 </div>
                                 <div class="reviews-comments-wrap">
                                     <!-- reviews-comments-item -->
                                     <div class="reviews-comments-item">
-                                        <div class="review-comments-avatar">
-                                            <img src="images/avatar/1.jpg" alt="">
-                                        </div>
                                         <div class="reviews-comments-item-text">
-                                            <h4><a href="#">Jessie Manrty</a></h4>
+                                            <h4><a href="#">Tour Date: <%# Eval("TourDate") %></a></h4>
                                             <div class="listing-rating card-popup-rainingvis" data-starrating2="5"></div>
                                             <div class="clearfix"></div>
-                                            <p>" Commodo est luctus eget. Proin in nunc laoreet justo volutpat blandit enim. Sem felis, ullamcorper vel aliquam non, varius eget justo. Duis quis nunc tellus sollicitudin mauris. "</p>
-                                            <span class="reviews-comments-item-date"><i class="fa fa-calendar-check-o"></i>27 May 2018</span>
+                                            <p><%# Eval("Review") %> this is an example of what could be an review</p>
+                                            <span class="reviews-comments-item-date"><i class="fa fa-calendar-check-o"></i>Experience Rating: <%# Eval("Rating") %></span>
                                         </div>
                                     </div>
                                     <!--reviews-comments-item end-->
