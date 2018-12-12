@@ -25,7 +25,7 @@ public partial class EditProfile : System.Web.UI.Page
         string constring = WebConfigurationManager.ConnectionStrings["5050_Viavago"].ConnectionString;
         SqlConnection con = new SqlConnection(constring);
         string selectCommand = "SELECT [UserID], [FirstName], [LastName], [ProfileImg], [City], [Country], [IsGuide], [AboutMe], [State], [UserName] FROM [Users] WHERE ([UserID] = @UserID);";
-        SqlCommand cmdSelect = new SqlCommand(selectCommand);
+        SqlCommand cmdSelect = new SqlCommand(selectCommand, con);
         cmdSelect.Parameters.AddWithValue("@UserID", Session["UserId"]);
 
         DataTable table = new DataTable();

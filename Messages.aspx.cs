@@ -17,15 +17,13 @@ public partial class Messages : System.Web.UI.Page
         //    txtStatus.Text += i.ToString();
         //}
         txtStatus.Text = Session["UserId"].ToString();
-        //TextBox txtReply = (TextBox) lvwInbox.FindControl("txtReply");?????????????????????????????????
-        //txtReply.Visible = false;
     }
 
 
     protected void btnReply_OnClick(object sender, EventArgs e)
     {
-        //TextBox txtReply = (TextBox)lvwInbox.FindControl("txtReply");????????????????????????????/
-        //txtReply.Visible = true;
+        TextBox txtReply = (TextBox)lvwInbox.FindControl("txtReply");
+        txtReply.Visible = true;
     }
 
     protected void btnSend_OnClick(object sender, EventArgs e)
@@ -36,9 +34,9 @@ public partial class Messages : System.Web.UI.Page
         SqlCommand cmd = new SqlCommand(insertCommand, con);
 
         cmd.Parameters.AddWithValue("@SenderID", Session["UserId"]);
-        cmd.Parameters.AddWithValue("@ReceiverID", lvwInbox.DataKeyNames[0]);
+        cmd.Parameters.AddWithValue("@ReceiverID", lvwInbox.DataKeys[0].Value);
         TextBox txtReply = (TextBox)lvwInbox.FindControl("txtReply");
-        cmd.Parameters.AddWithValue("@Message", txtReply.Text); ??????????????????????????????????????
+        cmd.Parameters.AddWithValue("@Message", txtReply.Text); 
         cmd.Parameters.AddWithValue("@Date", DateTime.Today);
 
         try
@@ -54,5 +52,38 @@ public partial class Messages : System.Web.UI.Page
         {
             con.Close();
         }
+    }
+
+    protected void lvwInbox_ItemCommand(object sender, ListViewCommandEventArgs e)
+    {
+        if (e.CommandName == "InsertMessage")
+        { 
+        string constring = WebConfigurationManager.ConnectionStrings["5050_Viavago"].ConnectionString;
+        SqlConnection con = new SqlConnection(constring);
+        string insertCommand = "INSERT INTO Messages (SenderID, ReceiverID, Message, Date) VALUES (@SenderID, @ReceiverID, @Message, @Date);";
+        SqlCommand cmd = new SqlCommand(insertCommand, con);
+
+        cmd.Parameters.AddWithValue("@SenderID", Session["UserId"]);
+        cmd.Parameters.AddWithValue("@ReceiverID",lvwInbox.DataKeys[e.Item.DataItemIndex].Value );
+        TextBox txtReply = (TextBox)e.Item.FindControl("txtReply");
+        cmd.Parameters.AddWithValue("@Message", txtReply.Text);
+        cmd.Parameters.AddWithValue("@Date", DateTime.Today);
+
+        try
+        {
+            con.Open();
+            cmd.ExecuteNonQuery();
+        }
+        catch (Exception err)
+        {
+            txtStatus.Text = err.Message;
+        }
+        finally
+        {
+            con.Close();
+            lvwInbox.EditIndex = -1;
+            lvwInbox.DataBind();
+        }
+    }
     }
 }

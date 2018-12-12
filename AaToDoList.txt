@@ -3,9 +3,9 @@ Logged In:
 Bookings.aspx
 ChangePassword.aspx-INSERT
 Dashboard.aspx
-EditProfile.aspx-INSERT
+-JB EditProfile.aspx-INSERT
 	??ExecuteReader: Connection property has not been initialized.
-Messages.aspx -JB
+-JB Messages.aspx
 	??problems with findcontrol method
 MyTours.aspx
 NewTour.aspx-INSERT
@@ -37,4 +37,3 @@ functionalities (such as the Identity service for logging in or creating account
 7. Input validation for all free-form user entries that could potentially result in errors
 8. 1 user control -JB
 9. 1 navigation control
-	??Displays only on EditProfile.aspx, not on other dashboard pages
