@@ -17,7 +17,6 @@
                 <div class="profile-edit-wrap">
                     <div class="profile-edit-page-header">
                         <h2>Add Listing</h2>
-                        <a href="TourDetail.aspx">TourDetail.aspx</a>
                     </div>
                     <div class="row">
                         <div class="col-md-3">

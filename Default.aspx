@@ -16,7 +16,7 @@
                             <!-- slideshow-item -->	
                             <div class="slideshow-item">
                                 <div class="bg"  data-bg="images/restaurant.jpg"></div>
-                            </div>
+                            </div
                             <!--  slideshow-item end  -->	
                             <!-- slideshow-item -->	
                             <div class="slideshow-item">
@@ -64,7 +64,7 @@
                    
 
                     <!--section -->  
-                    <section>
+                    <%--<section>
                         <div class="container">
                             <div class="section-title">
                                 <h2>How it works</h2>
@@ -106,7 +106,7 @@
                             </div>
                             <!--process-wrap   end-->
                         </div>
-                    </section>
+                    </section>--%>
                     <section class="parallax-section" data-scrollax-parent="true">
                         <div class="bg"  data-bg="images/city.jpg"></div>
                         <div class="overlay co lor-overlay"></div>
@@ -114,7 +114,7 @@
                         <div class="container">
                             <div class="intro-item fl-wrap">
                                 <h2>Visit the Best Places In Your City</h2>
-                                <h3>Find great places , hotels , restourants , shops.</h3>
+                                <h3>Discover new adventures you can't find on a map!</h3>
                                 <a class="trs-btn" href="NewTour.aspx">Add Listing + </a>
                             </div>
                         </div>

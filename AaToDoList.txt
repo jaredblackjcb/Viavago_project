@@ -3,19 +3,28 @@ Logged In:
 Bookings.aspx
 ChangePassword.aspx-INSERT
 Dashboard.aspx
+	Get rid of Dashboard page and links
 -JB EditProfile.aspx-INSERT
 	??ExecuteReader: Connection property has not been initialized.
 -JB Messages.aspx
 	??problems with findcontrol method
 MyTours.aspx
 NewTour.aspx-INSERT
+	INSERT to Tour_Information
 Reviews.aspx
+
 
 
 Anonymous:
 Default.aspx
+	Get rid of search bar and replace it with a button that takes you to Tours.aspx
 Tours.aspx
+	Get rid of filters
 TourDetail.aspx-INSERT(Tour Booking), SELECT(TourInformation)
+	Change to form view and fix formatting for bookings
+	INSERT to Bookings table
+	Listview for reviews
+	INSERT to Reviews
 UserProfile.aspx
 GuideRegistration.aspx-INSERT
 404.html
@@ -24,6 +33,7 @@ GuideRegistration.aspx-INSERT
 Viavago.Master
 	links- Home, Browse Tours, Become a Guide, Contact us?
 Web.config
+	-JB Build access controls
 
 Requirements
 1. 5 interlinked Web forms (.aspx pages) that display dynamic, database-driven content per team member. To be counted as dynamic, the page must retrieve information 

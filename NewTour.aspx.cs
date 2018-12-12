@@ -22,12 +22,12 @@ public partial class NewTour : System.Web.UI.Page
 
         //define ADO.net objects
         string insertSql =
-            "INSERT INTO Tour_Information (GuideID, TourName, Category, Description, Price, StreetAddress, City, State, Country) VALUES (@GuideID, @TourName, @Category, @Description, @Price, @StreetAddress, @City, @State, @Country)";
+            "INSERT INTO Tour_Information (GuideID, TourName, Category, Description, Price, StreetAddress, City, State, Country, TourImg) VALUES (@GuideID, @TourName, @Category, @Description, @Price, @StreetAddress, @City, @State, @Country, @TourImg)";
         SqlConnection con = new SqlConnection(connectionString);
         SqlCommand cmd = new SqlCommand(insertSql, con);
 
         //create parameters and attach them to the command
-        cmd.Parameters.AddWithValue("@GuideID", User.Identity.Name); //How to make session variable for UserID?
+        cmd.Parameters.AddWithValue("@GuideID", Session["UserId"]); //How to make session variable for UserID?
         cmd.Parameters.AddWithValue("@TourName", txtTourName.Text);
         cmd.Parameters.AddWithValue("@Category", ddlCategory.Value);
         cmd.Parameters.AddWithValue("@Description", txtDescription.InnerText);
@@ -36,14 +36,16 @@ public partial class NewTour : System.Web.UI.Page
         cmd.Parameters.AddWithValue("@City", txtCity.Text);
         cmd.Parameters.AddWithValue("@State", txtState.Text);
         cmd.Parameters.AddWithValue("@Country", txtCountry.Text);
+        string filename = Path.GetFileName(fupTourImage.FileName);
+        cmd.Parameters.AddWithValue("@TourImg", filename);
+
 
         //How to get images to upload and get image url into tour_images with the right TourID?
-        
+
         if (fupTourImage.HasFile)
         {
             try
             {
-                string filename = Path.GetFileName(fupTourImage.FileName);
                 fupTourImage.SaveAs(Server.MapPath("~/TourImages/" + filename));
                 lblStatus.Text = "Save successful!";
             }
@@ -52,6 +54,20 @@ public partial class NewTour : System.Web.UI.Page
                 lblStatus.Text = "Save unsuccessful. The application encountered the following error while uploading: " + err.Message;
             }
 
+        }
+
+        try
+        {
+            con.Open();
+            cmd.ExecuteNonQuery();
+        }
+        catch (Exception err)
+        {
+            lblStatus.Text = err.Message;
+        }
+        finally
+        {
+            con.Close();
         }
     }
 
