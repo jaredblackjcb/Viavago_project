@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
@@ -10,9 +11,10 @@ using System.Web.UI.WebControls;
 
 public partial class NewTour : System.Web.UI.Page
 {
+
     protected void Page_Load(object sender, EventArgs e)
     {
-
+ 
     }
 
     protected void btnSave_Click(object sender, EventArgs e)
@@ -31,6 +33,8 @@ public partial class NewTour : System.Web.UI.Page
         cmd.Parameters.AddWithValue("@TourName", txtTourName.Text);
         cmd.Parameters.AddWithValue("@Category", ddlCategory.Value);
         cmd.Parameters.AddWithValue("@Description", txtDescription.InnerText);
+        //Double price;
+        //Double.TryParse(txtPrice.Text, out price);
         cmd.Parameters.AddWithValue("@Price", txtPrice.Text);
         cmd.Parameters.AddWithValue("@StreetAddress", txtAddress.Text);
         cmd.Parameters.AddWithValue("@City", txtCity.Text);

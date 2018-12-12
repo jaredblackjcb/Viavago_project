@@ -7,7 +7,14 @@ using System.Web.UI.WebControls;
 
 public partial class MyTours : System.Web.UI.Page
 {
+
     protected void Page_Load(object sender, EventArgs e)
+    {
+
+    }
+
+
+    protected void lvwMyTours_OnItemDeleting(object sender, ListViewDeleteEventArgs e)
     {
 
     }

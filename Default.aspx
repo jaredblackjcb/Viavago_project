@@ -28,10 +28,11 @@
                         <div class="hero-section-wrap fl-wrap">
                             <div class="container">
                                 <div class="intro-item fl-wrap">
-                                    <h2>We will help you to find all</h2>
-                                    <h3>Find great places , hotels , restourants , shops.</h3>
+                                    <h2>Experience travel like a local</h2>
+                                    <h3>Find hidden treasures off the beaten path.</h3>
                                 </div>
-                                <div class="main-search-input-wrap">
+                                <a class="trs-btn" href="Tours.aspx">Explore</a>
+<%--                                <div class="main-search-input-wrap">
                                     <div class="main-search-input fl-wrap">
                                         <div class="main-search-input-item">
                                             <input type="text" placeholder="What are you looking for?" value=""/>
@@ -51,7 +52,7 @@
                                         </div>
                                         <asp:Button runat="server" class="main-search-button" PostBackUrl="~/Tours.aspx" Text="Search"></asp:Button>
                                     </div>
-                                </div>
+                                </div>--%>
                             </div>
                         </div>
                         <div class="bubble-bg"> </div>
@@ -115,7 +116,7 @@
                             <div class="intro-item fl-wrap">
                                 <h2>Visit the Best Places In Your City</h2>
                                 <h3>Discover new adventures you can't find on a map!</h3>
-                                <a class="trs-btn" href="NewTour.aspx">Add Listing + </a>
+                                <a class="trs-btn" href="NewTour.aspx">Add Listing</a>
                             </div>
                         </div>
                     </section>

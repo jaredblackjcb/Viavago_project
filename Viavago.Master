@@ -39,13 +39,13 @@
             <!-- header-->
             <header class="main-header dark-header fs-header sticky">
                 <div class="header-inner">
-                    <asp:Label ID="lblStatus" runat="server" Text="Status label" ForeColor="White"></asp:Label>
+                    <asp:Label ID="lblStatus" runat="server" Text="" ForeColor="White"></asp:Label>
 
                     <div class="logo-holder">
                         <a href="Default.aspx">
-                            <img src="images/logo.png" alt=""></a>
+                            <img src="images/-viavago-.png" alt=""></a>
                     </div>
-                    <div class="header-search vis-header-search">
+                    <%--<div class="header-search vis-header-search">
                         <div class="header-search-input-item">
                             <input type="text" placeholder="Keywords" value="" />
                         </div>
@@ -59,9 +59,9 @@
                             </select>
                         </div>
                         <asp:Button runat="server" class="header-search-button" PostBackUrl="~/Tours.aspx" Text="Search"></asp:Button>
-                    </div>
-                    <div class="show-search-button"><i class="fa fa-search"></i><span>Search</span></div>
-                    <a href="dashboard-add-listing.html" class="add-list">Add Listing <span><i class="fa fa-plus"></i></span></a>
+                    </div>--%>
+<%--                    <div class="show-search-button"><i class="fa fa-search"></i><span>Search</span></div>
+                    <a href="dashboard-add-listing.html" class="add-list">Add Listing <span><i class="fa fa-plus"></i></span></a>--%>
                     <asp:LoginView ID="LoginView1" runat="server">
                         <AnonymousTemplate>
                             <div class="show-reg-form modal-open">
@@ -99,7 +99,7 @@
                                                 <i class="fa fa-caret-down"></i></a>
                                             <!--second level -->
                                             <ul>
-                                                <li><a href="Dashboard.aspx">Dashboard</a></li>
+                                                <li><a href="MyTours.aspx">My Tours</a></li>
                                                 <li><a href="Messages.aspx">Messages</a></li>
                                                 <li><a href="EditProfile.aspx">Edit Profile</a></li>
                                                 <%--<li><a href="Profile.aspx">View Profile</a></li>--%>
@@ -130,14 +130,14 @@
                     <div class="row">
                         <div class="col-md-4">
                             <div class="about-widget">
-                                <img src="images/logo.png" alt="">
+                                <img src="images/-viavago-.png" alt="">
                             </div>
                         </div>
                         <div class="col-md-4">
-                            <div class="copyright">&#169; CityBook 2018 .  All rights reserved.</div>
+                            <%--<div class="copyright">&#169; CityBook 2018 .  All rights reserved.</div>--%>
                         </div>
                         <div class="col-md-4">
-                            <div class="footer-social">
+                            <%--<div class="footer-social">
                                 <ul>
                                     <li><a href="#" target="_blank"><i class="fa fa-facebook-official"></i></a></li>
                                     <li><a href="#" target="_blank"><i class="fa fa-twitter"></i></a></li>
@@ -145,11 +145,11 @@
                                     <li><a href="#" target="_blank"><i class="fa fa-vk"></i></a></li>
                                     <li><a href="#" target="_blank"><i class="fa fa-whatsapp"></i></a></li>
                                 </ul>
-                            </div>
+                            </div>--%>
 
                             <ul class="footer-contacts fl-wrap">
                                 <li><span><i class="fa fa-envelope-o"></i>Mail :</span><a href="#" target="_blank">Viavagohelp@viavagotravel.com</a></li>
-                                <li><span><i class="fa fa-map-marker"></i>Adress :</span><a href="#" target="_blank">USA, 27TH Brooklyn NY</a></li>
+                                <li><span><i class="fa fa-map-marker"></i>Address :</span><a href="#" target="_blank">USA, 27TH Brooklyn NY</a></li>
                                 <li><span><i class="fa fa-phone"></i>Phone :</span><a href="#">+8(435)565-4565</a></li>
                             </ul>
 

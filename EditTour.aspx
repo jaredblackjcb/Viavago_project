@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Viavago.Master" AutoEventWireup="true" CodeFile="NewTour.aspx.cs" Inherits="NewTour" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Viavago.master" AutoEventWireup="true" CodeFile="EditTour.aspx.cs" Inherits="EditTour" %>
 
 <%@ Register Src="~/DashboardLinks.ascx" TagPrefix="uc1" TagName="DashboardLinks" %>
 
@@ -21,7 +21,7 @@
                     <div class="row">
                         <div class="col-md-3">
                             <div class="fixed-bar fl-wrap">
-                                <uc1:DashboardLinks runat="server" ID="DashboardLinks" />
+                                <uc1:DashboardLinks runat="server" ID="DashboardLinks1" />
                             </div>
                         </div>
                         <div class="col-md-9">
@@ -93,7 +93,7 @@
                                                             </label>
                                                         </div>
                                                         <div class="add-list-media-wrap">
-                                                            <form   class="fuzone">
+                                                            <div   class="fuzone">
                                                                 <div class="fu-text">
                                                                     <span><i class="fa fa-picture-o"></i> Click here or drop files to upload</span>
                                                                 </div>
@@ -155,14 +155,13 @@
                                                     <label for="check-d">Wireless Internet</label>
                                                 </div>--%>
                                                     <%--<asp:Panel ID="Panel1" runat="server">--%>
-                                                        <asp:FileUpload ID="fupTourImage" runat="server" CssClass="upload" />
-                                                        <%--<asp:Button ID="Button1" runat="server" Text="Add another image.." OnClick="Button1_OnClick" />--%>
+                                                    <asp:FileUpload ID="fupTourImage" runat="server" CssClass="upload" />
+                                                    <%--<asp:Button ID="Button1" runat="server" Text="Add another image.." OnClick="Button1_OnClick" />--%>
                                                     <%--</asp:Panel>--%>
-
                                                 </div>
                                             </div>
                                         </div>
-                                        <asp:Image ID="imgTourImage" runat="server" />
+                                        <asp:Image ID="imgTourImage" runat="server" Height="200"/>
                                         <!--col end-->
                                         <!--col -->
                                         <%--<div class="profile-edit-container add-list-container">
@@ -235,12 +234,12 @@
                                                                 </div>
                                                             </div>
                                                             <div class="add-list-media-wrap">
-                                                                <form   class="fuzone">
+                                                                <div   class="fuzone">
                                                                     <div class="fu-text">
                                                                         <span><i class="fa fa-picture-o"></i> Click here or drop files to upload</span>
                                                                     </div>
                                                                     <input type="file" class="upload">
-                                                                </form>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                         <!-- act-widget end-->
@@ -397,7 +396,7 @@
                                                 <input type="text" placeholder="vk.com" value=""/>
                                                 <label> Whatsapp <i class="fa fa-whatsapp"></i>  </label>
                                                 <input type="text" placeholder="https://www.whatsapp.com" value=""/>--%>
-                                    <asp:Button ID="btnSave" runat="server" Text="Save" CssClass="btn  big-btn  color-bg flat-btn" OnClick="btnSave_Click" />
+                                    <asp:Button ID="btnSave" runat="server" Text="Save Changes" CssClass="btn  big-btn  color-bg flat-btn" OnClick="btnSave_Click" />
                                     <%--<button class="btn  big-btn  color-bg flat-btn">Save Changes<i class="fa fa-angle-right"></i></button>--%>
                                 </div>
                             </div>
@@ -414,6 +413,5 @@
         <div class="limit-box fl-wrap"></div>
 
     </div>
-
 </asp:Content>
 

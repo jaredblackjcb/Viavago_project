@@ -12,11 +12,7 @@ public partial class Messages : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        //foreach (var i in Session)
-        //{
-        //    txtStatus.Text += i.ToString();
-        //}
-        txtStatus.Text = Session["UserId"].ToString();
+
     }
 
 
@@ -56,34 +52,43 @@ public partial class Messages : System.Web.UI.Page
 
     protected void lvwInbox_ItemCommand(object sender, ListViewCommandEventArgs e)
     {
-        if (e.CommandName == "InsertMessage")
+        if (e.CommandName == "InsertMessage" && Session["UserId"] != null)
         { 
-        string constring = WebConfigurationManager.ConnectionStrings["5050_Viavago"].ConnectionString;
-        SqlConnection con = new SqlConnection(constring);
-        string insertCommand = "INSERT INTO Messages (SenderID, ReceiverID, Message, Date) VALUES (@SenderID, @ReceiverID, @Message, @Date);";
-        SqlCommand cmd = new SqlCommand(insertCommand, con);
+            string constring = WebConfigurationManager.ConnectionStrings["5050_Viavago"].ConnectionString;
+            SqlConnection con = new SqlConnection(constring);
+            string insertCommand = "INSERT INTO Messages (SenderID, ReceiverID, Message, Date) VALUES (@SenderID, @ReceiverID, @Message, @Date);";
+            SqlCommand cmd = new SqlCommand(insertCommand, con);
 
-        cmd.Parameters.AddWithValue("@SenderID", Session["UserId"]);
-        cmd.Parameters.AddWithValue("@ReceiverID",lvwInbox.DataKeys[e.Item.DataItemIndex].Value );
-        TextBox txtReply = (TextBox)e.Item.FindControl("txtReply");
-        cmd.Parameters.AddWithValue("@Message", txtReply.Text);
-        cmd.Parameters.AddWithValue("@Date", DateTime.Today);
+            cmd.Parameters.AddWithValue("@SenderID", Session["UserId"]);
+            cmd.Parameters.AddWithValue("@ReceiverID",lvwInbox.DataKeys[e.Item.DataItemIndex].Value );
+            TextBox txtReply = (TextBox)e.Item.FindControl("txtReply");
+            cmd.Parameters.AddWithValue("@Message", txtReply.Text);
+            cmd.Parameters.AddWithValue("@Date", DateTime.Today);
 
-        try
-        {
-            con.Open();
-            cmd.ExecuteNonQuery();
+            try
+            {
+                con.Open();
+                int rowsAffected = cmd.ExecuteNonQuery();
+                if (rowsAffected > 0)
+                {
+                    txtStatus.Text = "Message sent.";
+                }
+            }
+            catch (Exception err)
+            {
+                txtStatus.Text = err.Message;
+            }
+            finally
+            {
+                con.Close();
+                lvwInbox.EditIndex = -1;
+                lvwInbox.DataBind();
+            }
         }
-        catch (Exception err)
+        else
         {
-            txtStatus.Text = err.Message;
+            txtStatus.Text = "Session has expired. Please log in.";
+
         }
-        finally
-        {
-            con.Close();
-            lvwInbox.EditIndex = -1;
-            lvwInbox.DataBind();
-        }
-    }
     }
 }

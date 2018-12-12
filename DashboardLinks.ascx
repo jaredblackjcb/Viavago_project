@@ -21,6 +21,5 @@
             <li><a href="NewTour.aspx"><i class="fa fa-plus-square-o"></i>Add New Tour</a></li>
         </ul>
     </div>
-    <!-- user-profile-menu end-->
-    <a href="#" class="log-out-btn">Log Out</a>
+
 </div>
