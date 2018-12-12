@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0">
   <siteMapNode url="Default.aspx" title="Home"  description="Home">
-    <siteMapNode url="Dashboard.aspx" title="Dashboard" description="Dashboard" >
+    <!--<siteMapNode url="Dashboard.aspx" title="Dashboard" description="Dashboard" >-->
       <siteMapNode url="MyTours.aspx" title="My Tours"  description="My Tours" />
       <siteMapNode url="Bookings.aspx" title="Bookings" description="Bookings" />
       <siteMapNode url="NewTour.aspx" title="New Tour"  description="New Tours" />
@@ -9,7 +9,7 @@
       <siteMapNode url="Messages.aspx" description="Messages" title="Messages" />
       <siteMapNode url="Reviews.aspx" title="Review" description="Review" />
       <siteMapNode url="ChangePassword.aspx" title="Change My Password"  description="Change My Password" />
-    </siteMapNode>
+    <!--</siteMapNode>-->
 
     <siteMapNode url="Tours.aspx" title="Browse Tours"  description="Browse Tours">
         <siteMapNode url="TourDetail.aspx" title="Tour Details" description="Tour Details">

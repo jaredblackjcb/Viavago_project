@@ -4,7 +4,7 @@
     <div class="user-profile-menu">
         <h3>Main</h3>
         <ul>
-            <li><a href="Dashboard.aspx" class="user-profile-act"><i class="fa fa-gears"></i>Dashboard</a></li>
+            <%--<li><a href="Dashboard.aspx" class="user-profile-act"><i class="fa fa-gears"></i>Dashboard</a></li>--%>
             <li><a href="EditProfile.aspx"><i class="fa fa-user-o"></i>Edit Profile</a></li>
             <li><a href="Messages.aspx"><i class="fa fa-envelope-o"></i>Messages <span>3</span></a></li>
             <li><a href="ChangePassword.aspx"><i class="fa fa-unlock-alt"></i>Change Password</a></li>

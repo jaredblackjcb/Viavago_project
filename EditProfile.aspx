@@ -43,8 +43,8 @@
                                     <input id="txtLastName" runat="server" type="text" />
                                     <label>Email Address<i class="fa fa-envelope-o"></i>  </label>
                                     <input id="txtEmail" runat="server" type="text"   />
-                                    <label>Phone<i class="fa fa-phone"></i>  </label>
-                                    <input id="txtPhone" runat="server" type="text" />
+<%--                                    <label>Phone<i class="fa fa-phone"></i>  </label>
+                                    <input id="txtPhone" runat="server" type="text" />--%>
                                     <label>City<i class="fa fa-phone"></i>  </label>
                                     <input id="txtCity" runat="server" type="text"  />
                                     <label>State<i class="fa fa-phone"></i>  </label>

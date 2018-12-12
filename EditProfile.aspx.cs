@@ -44,12 +44,12 @@ public partial class EditProfile : System.Web.UI.Page
             txtEmail.Value = (string)table.Rows[0]["UserName"];
             txtFirstName.Value = (string)table.Rows[0]["FirstName"];
             //Set the UserManager variable declared above to a new instance of the IdentityEF.UserManager class
-            usermanager = new IdentityEF.UserManager();
+            //usermanager = new IdentityEF.UserManager();
 
-            //Call the FindByName method of the UserManager to set the ApplicationUser variable to the user that is currently logged in
-            user = usermanager.FindByName(User.Identity.Name);
+            ////Call the FindByName method of the UserManager to set the ApplicationUser variable to the user that is currently logged in
+            //user = usermanager.FindByName(User.Identity.Name);
 
-            txtPhone.Value = user.PhoneNumber;
+            //txtPhone.Value = user.PhoneNumber;
         }
         catch (Exception err)
         {
@@ -92,7 +92,7 @@ public partial class EditProfile : System.Web.UI.Page
         //Call the FindByName method of the UserManager to set the ApplicationUser variable to the user that is currently logged in
         user = usermanager.FindByName(User.Identity.Name);
 
-        user.PhoneNumber = txtPhone.Value;
+        //user.PhoneNumber = txtPhone.Value;
         user.Email = txtEmail.Value;
         user.UserName = txtEmail.Value;
 
