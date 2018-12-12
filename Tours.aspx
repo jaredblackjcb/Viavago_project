@@ -24,7 +24,7 @@
                                         </div>
                                     </div>
                                     <!-- listsearch-input-wrap  -->  
-                                    <div class="listsearch-input-wrap fl-wrap">
+                                    <%--<div class="listsearch-input-wrap fl-wrap">
                                         <div class="listsearch-input-item">
                                             <i class="mbri-key single-i"></i>
                                             <input type="text" placeholder="Keywords?" value=""/>
@@ -50,20 +50,20 @@
                                                 
                                             </asp:LoginView>
                                         </div>
-                                    <div class="listsearch-input-text" id="autocomplete-container">
+<%--                                    <div class="listsearch-input-text" id="autocomplete-container">
                                         <label><i class="mbri-map-pin"></i> Enter Addres </label>
                                         <input type="text" placeholder="Destination , Area , Street" id="autocomplete-input" class="qodef-archive-places-search" value=""/>
                                         <a  href="#"  class="loc-act qodef-archive-current-location"><i class="fa fa-dot-circle-o"></i></a>
-                                    </div>
+                                    </div>--%>
                                         <!-- hidden-listing-filter -->
-                                        <div class="hidden-listing-filter fl-wrap">
+                                       <%-- <div class="hidden-listing-filter fl-wrap">
                                             <div class="distance-input fl-wrap">
                                                 <div class="distance-title"> Radius around selected destination <span></span> km</div>
                                                 <div class="distance-radius-wrap fl-wrap">
                                                     <input class="distance-radius rangeslider--horizontal" type="range" min="1" max="100" step="1" value="1" data-title="Radius around selected destination">
                                                 </div>
                                             </div>
-                                            <%--<!-- Checkboxes -->
+                                            <!-- Checkboxes -->
                                             <div class=" fl-wrap filter-tags">
                                                 <h4>Filter by Tags</h4>
                                                 <div class="filter-tags-wrap">
@@ -82,34 +82,33 @@
                                                     <input id="check-d" type="checkbox" name="check">
                                                     <label for="check-d">Wireless Internet</label>
                                                 </div>
-                                            </div>--%>
-                                        </div>
+                                            </div>
+                                        </div>--%>
                                         <!-- hidden-listing-filter end -->
-                                        <button class="button fs-map-btn">Update</button>
+                                       <%--<button class="button fs-map-btn">Update</button>
                                         <div class="more-filter-option">More Filters <span></span></div>
-                                    </div>
+                                    </div>--%>
                                     <!-- listsearch-input-wrap end -->   
                                 </div>
                                 <!-- list-main-wrap-->
                                 <div class="list-main-wrap fl-wrap card-listing">
                                     <!-- listing-item -->
-                                    <asp:SqlDataSource ID="SQLTours" runat="server" ConnectionString='<%$ ConnectionStrings:5050_Viavago %>' SelectCommand="SELECT i.[TourID], [GuideID], [TourName], [Category], [Description], [Price], [NumberOfReviews], [AverageRating], [NumberOfLikes], [NumberOfViews], [MapiFrame], [StreetAddress], [City], [State], [Country], ImgUrl 
-                                    FROM [Tour_Information] as i JOIN Tour_Images as t
-                                    ON i.TourID = t.TourID
-                                    Order By AverageRating">
+                                    <asp:SqlDataSource ID="SQLTours" runat="server" ConnectionString='<%$ ConnectionStrings:5050_Viavago %>' SelectCommand="SELECT [TourID], [GuideID], [TourName], [Category], [Description], [Price], [NumberOfReviews], [AverageRating], [NumberOfLikes], [NumberOfViews], [MapiFrame], [StreetAddress], [City], [State], [Country], TourImg
+                                    FROM [Tour_Information] 
+                                    Order By AverageRating DESC">
                                     </asp:SqlDataSource>
                                     <asp:Repeater ID="lstTours" runat="server" DataSourceID="SQLTours">
                                        <ItemTemplate>
                                     <div class="listing-item">
                                         <article class="geodir-category-listing fl-wrap">
                                             <div class="geodir-category-img">
-                                                <img src="<%# Eval("ImgUrl") %>" alt= "images/KevinsTour.jpg">
+                                                <img runat="server" src='<%# Eval("TourImg","~/TourImages/{0}") %>' alt= '<%# Eval("TourImg","~/TourImages/{0}") %>'>
                                                 <div class="overlay"></div>
                                                 <div class="list-post-counter"><span><%# Eval("NumberofReviews") %></span><i class="fa fa-heart"></i></div>
                                             </div>
                                             <div class="geodir-category-content fl-wrap">
                                                 <a class="listing-geodir-category" href="TourDetail.aspx?tourid=<%# Eval("TourID") %>">Go Here!</a>
-                                                <div class="listing-avatar"><a href="author-single.html"><img src="<%# Eval("ImgUrl") %>" alt=""></a>
+                                                <div class="listing-avatar"><a href="author-single.html"><img runat="server" src='<%# Eval("TourImg","~/TourImages/{0}") %>' alt='<%# Eval("TourImg","~/TourImages/{0}") %>'></a>
                                                     <span class="avatar-tooltip">Added By:  <strong><%# Eval("TourName") %></strong></span>
                                                 </div>
                                                 <h3><a href="listing-single.html"><%# Eval("TourName") %></a></h3>
