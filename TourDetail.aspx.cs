@@ -75,4 +75,50 @@ public partial class TourDetail : System.Web.UI.Page
 
         }
     }
+
+    protected void btnSubmitReview_OnServerClick(object sender, EventArgs e)
+    {
+        string constring = WebConfigurationManager.ConnectionStrings["5050_Viavago"].ConnectionString;
+        SqlConnection con = new SqlConnection(constring);
+        string insertCommand = "INSERT INTO Reviews (Rating, Review, ReviewerID, TourID) VALUES (@Rating, @Review, @ReviewerID, @TourID);";
+        SqlCommand cmdInsert = new SqlCommand(insertCommand, con);
+
+        cmdInsert.Parameters.AddWithValue("@ReviewerID", Session["UserId"]);
+        //string rating = rating1.Value != null ? "1" :
+        //    rating2.Value != null ? "2" :
+        //    rating3.Value != null ? "3" :
+        //    rating4.Value != null ? "4" :
+        //    rating5.Value != null ? "5" : "0";
+        int rating = Convert.ToInt32(rblRating.SelectedValue);
+        cmdInsert.Parameters.AddWithValue("@Rating", rating);
+        cmdInsert.Parameters.AddWithValue("@Review", txtReview.Value);
+        cmdInsert.Parameters.AddWithValue("@TourID", Request["tourid"]);
+
+
+        try
+        {
+            con.Open();
+            int rowsAffected = cmdInsert.ExecuteNonQuery();
+            if (rowsAffected > 0)
+            {
+                lblStatus.Text = "Review successful.";
+
+            }
+            else
+            {
+                lblStatus.Text = "There was a problem submitting the review.";
+
+            }
+        }
+        catch (Exception err)
+        {
+            lblStatus.Text = err.Message;
+        }
+        finally
+        {
+            con.Close();
+            
+
+        }
+    }
 }

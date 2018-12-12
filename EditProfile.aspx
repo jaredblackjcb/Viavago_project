@@ -67,7 +67,7 @@
                                     
                                 </div>
                                 <div class="custom-form">
-                                    <asp:Label ID="lblStatus" runat="server" Text="Label"></asp:Label>
+                                    <asp:Label ID="lblStatus" runat="server" Text=""></asp:Label>
                                     <button runat="server" id="btnSaveChanges" class="btn  big-btn  color-bg flat-btn" OnServerClick="btnSaveChanges_OnServerClick">Save Changes<i class="fa fa-angle-right"></i></button>
                                 </div>
                             </div>

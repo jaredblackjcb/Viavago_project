@@ -106,7 +106,7 @@ public partial class Viavago : System.Web.UI.MasterPage
                 var UserId = (Int32)table.Rows[0]["UserID"];
                 Session["UserId"] = UserId;
                 //Redirect the user to the Profile page where they can add additional profile variables.
-                Response.Redirect("~/Dashboard.aspx");
+                Response.Redirect("~/EditProfile.aspx");
             }
             else
             {

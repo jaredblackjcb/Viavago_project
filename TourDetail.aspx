@@ -74,7 +74,7 @@
                         <ul>
                             <li><a class="act-scrlink" href="#sec1">Top</a></li>
                             <li><a href="#sec2">Details</a></li>
-                            <li><a href="#sec3">Gallery</a></li>
+                            <%--<li><a href="#sec3">Gallery</a></li>--%>
                             <li><a href="#sec4">Reviews</a></li>
                         </ul>
                     </nav>
@@ -124,33 +124,44 @@
 
 
 
-                                <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString='<%$ ConnectionStrings:5050_Viavago %>' SelectCommand="SELECT [ReviewID], [Rating], [TourDate], [Review], [BookingID] FROM [Reviews]"></asp:SqlDataSource>
-                                <%--<asp:ListView ID="ListView1" runat="server" DataSourceID="SqlDataSource2"></asp:ListView>--%>
-                                <!-- list-single-main-item -->
-                                <div class="list-single-main-item fl-wrap" id="sec4">
-                                    <div class="list-single-main-item-title fl-wrap">
-                                        <h3>Item Revies -  <span>3 </span></h3>
-                                    </div>
-                                    <div class="reviews-comments-wrap">
-                                        <!-- reviews-comments-item -->
-                                        <div class="reviews-comments-item">
-                                            <div class="review-comments-avatar">
-                                                <img src="images/avatar/1.jpg" alt="">
+                                <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString='<%$ ConnectionStrings:5050_Viavago %>' SelectCommand="SELECT [ReviewID], [Rating], [TourDate], [Review], [BookingID], [ReviewerID], r.[TourID], u.FirstName + ' ' + u.LastName AS FullName, u.ProfileImg FROM [Reviews] r JOIN Users u ON r.ReviewerID = u.UserID WHERE ([TourID] = @TourID)">
+                                    <SelectParameters>
+                                        <asp:QueryStringParameter QueryStringField="tourid" Name="TourID" Type="Int32"></asp:QueryStringParameter>
+                                    </SelectParameters>
+                                </asp:SqlDataSource>
+                                <asp:ListView ID="ListView1" runat="server" DataSourceID="SqlDataSource2">
+                                    <LayoutTemplate>
+                                        <!-- list-single-main-item -->
+                                        <div class="list-single-main-item fl-wrap" id="sec4">
+                                            <div class="list-single-main-item-title fl-wrap">
+                                                <h3>Reviews <span> </span></h3>
                                             </div>
-                                            <div class="reviews-comments-item-text">
-                                                <h4><a href="#">Jessie Manrty</a></h4>
-                                                <div class="listing-rating card-popup-rainingvis" data-starrating2="5"></div>
-                                                <div class="clearfix"></div>
-                                                <p>" Commodo est luctus eget. Proin in nunc laoreet justo volutpat blandit enim. Sem felis, ullamcorper vel aliquam non, varius eget justo. Duis quis nunc tellus sollicitudin mauris. "</p>
-                                                <span class="reviews-comments-item-date"><i class="fa fa-calendar-check-o"></i>27 May 2018</span>
-                                            </div>
+                                            <div runat="server" ID="ItemPlaceHolder"></div>
                                         </div>
-                                        <!--reviews-comments-item end-->
+                                        <!-- list-single-main-item end -->
 
-                                    </div>
-                                </div>
-                                <!-- list-single-main-item end -->
+                                    </LayoutTemplate>
+                                    <ItemTemplate>
+                                        <div class="reviews-comments-wrap">
+                                            <!-- reviews-comments-item -->
+                                            <div class="reviews-comments-item">
+                                                <div class="review-comments-avatar">
+                                                    <img src='<%# Eval("ProfileImg", "~/ProfileImages/{0}") %>' alt="">
+                                                </div>
+                                                <div class="reviews-comments-item-text">
+                                                    <h4><a href="#"><%# Eval("FullName") %></a></h4>
+                                                    <div class="listing-rating card-popup-rainingvis" data-starrating2='<%# Eval("Rating") %>'></div>
+                                                    <div class="clearfix"></div>
+                                                    <p><%# Eval("Review") %></p>
+                                                    <%--<span class="reviews-comments-item-date"><i class="fa fa-calendar-check-o"></i>27 May 2018</span>--%>
+                                                </div>
+                                            </div>
+                                            <!--reviews-comments-item end-->
 
+                                        </div>
+
+                                    </ItemTemplate>
+                                </asp:ListView>
 
 
 
@@ -164,39 +175,50 @@
                                         <div class="leave-rating-wrap">
                                             <span class="leave-rating-title">Your rating  for this listing : </span>
                                             <div class="leave-rating">
-                                                <input type="radio" name="rating" id="rating-1" value="1" />
+                                                <asp:RadioButtonList ID="rblRating" runat="server" CssClass="fa fa-star-o" RepeatDirection="Horizontal">
+                                                    <asp:ListItem>1</asp:ListItem>
+                                                    <asp:ListItem>2</asp:ListItem>
+                                                    <asp:ListItem>3</asp:ListItem>
+                                                    <asp:ListItem>4</asp:ListItem>
+                                                    <asp:ListItem>5</asp:ListItem>
+                                                </asp:RadioButtonList>
+<%--                                                <input runat="server" type="radio" name="rating" id="rating1" value="1" />
                                                 <label for="rating-1" class="fa fa-star-o"></label>
-                                                <input type="radio" name="rating" id="rating-2" value="2" />
+                                                <input runat="server" type="radio" name="rating" id="rating2" value="2" />
                                                 <label for="rating-2" class="fa fa-star-o"></label>
-                                                <input type="radio" name="rating" id="rating-3" value="3" />
+                                                <input runat="server" type="radio" name="rating" id="rating3" value="3" />
                                                 <label for="rating-3" class="fa fa-star-o"></label>
-                                                <input type="radio" name="rating" id="rating-4" value="4" />
+                                                <input runat="server" type="radio" name="rating" id="rating4" value="4" />
                                                 <label for="rating-4" class="fa fa-star-o"></label>
-                                                <input type="radio" name="rating" id="rating-5" value="5" />
-                                                <label for="rating-5" class="fa fa-star-o"></label>
+                                                <input runat="server" type="radio" name="rating" id="rating5" value="5" />
+                                                <label for="rating-5" class="fa fa-star-o"></label>--%>
                                             </div>
+
                                         </div>
                                         <!-- Review Comment -->
                                         <div class="add-comment custom-form">
                                             <fieldset>
-                                                <div class="row">
+<%--                                                <div class="row">
                                                     <div class="col-md-6">
                                                         <label><i class="fa fa-user-o"></i></label>
-                                                        <input type="text" placeholder="Your Name *" value="" />
+                                                        <input runat="server" ID="txtFullName" type="text" placeholder="Your Name *" value="" />
                                                     </div>
                                                     <div class="col-md-6">
                                                         <label><i class="fa fa-envelope-o"></i></label>
-                                                        <input type="text" placeholder="Email Address*" value="" />
+                                                        <input runat="server" ID="txtReviewEmail" type="text" placeholder="Email Address*" value="" />
                                                     </div>
-                                                </div>
-                                                <textarea cols="40" rows="3" placeholder="Your Review:"></textarea>
+                                                </div>--%>
+                                                <textarea runat="server" ID="txtReview" cols="40" rows="3" placeholder="Your Review:"></textarea>
                                             </fieldset>
-                                            <button class="btn  big-btn  color-bg flat-btn">Submit Review <i class="fa fa-paper-plane-o" aria-hidden="true"></i></button>
+                                            <button runat="server" ID="btnSubmitReview" OnServerClick="btnSubmitReview_OnServerClick" class="btn  big-btn  color-bg flat-btn">Submit Review <i class="fa fa-paper-plane-o" aria-hidden="true"></i></button>
                                         </div>
                                     </div>
                                     <!-- Add Review Box / End -->
                                 </div>
                                 <!-- list-single-main-item end -->
+                                
+                                
+
                             </div>
                         </div>
                         <!--box-widget-wrap -->
@@ -369,7 +391,7 @@
                                         </div>--%>
                                 <!--box-widget-item end -->
                                 <!--box-widget-item -->
-                                <div class="box-widget-item fl-wrap">
+<%--                                <div class="box-widget-item fl-wrap">
                                     <div class="box-widget-item-header">
                                         <h3>Hosted by : </h3>
                                     </div>
@@ -391,7 +413,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div>--%>
                                 <!--box-widget-item end -->
                                 <!--box-widget-item -->
                                 <%--                                        <div class="box-widget-item fl-wrap">

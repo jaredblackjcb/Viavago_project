@@ -93,8 +93,8 @@
                                 <!-- list-main-wrap-->
                                 <div class="list-main-wrap fl-wrap card-listing">
                                     <!-- listing-item -->
-                                    <asp:SqlDataSource ID="SQLTours" runat="server" ConnectionString='<%$ ConnectionStrings:5050_Viavago %>' SelectCommand="SELECT [TourID], [GuideID], [TourName], [Category], [Description], [Price], [NumberOfReviews], [AverageRating], [NumberOfLikes], [NumberOfViews], [MapiFrame], [StreetAddress], [City], [State], [Country], TourImg
-                                    FROM [Tour_Information] 
+                                    <asp:SqlDataSource ID="SQLTours" runat="server" ConnectionString='<%$ ConnectionStrings:5050_Viavago %>' SelectCommand="SELECT [TourID], [GuideID], [TourName], [Category], [Description], [Price], [NumberOfReviews], [AverageRating], [NumberOfLikes], [NumberOfViews], [MapiFrame], [StreetAddress], ti.[City], ti.[State], ti.[Country], TourImg, FirstName + ' ' + LastName AS FullName, ProfileImg
+                                    FROM [Tour_Information] ti JOIN Users u ON ti.GuideID = u.UserID
                                     Order By AverageRating DESC">
                                     </asp:SqlDataSource>
                                     <asp:Repeater ID="lstTours" runat="server" DataSourceID="SQLTours">
@@ -107,11 +107,11 @@
                                                 <div class="list-post-counter"><span><%# Eval("NumberofReviews") %></span><i class="fa fa-heart"></i></div>
                                             </div>
                                             <div class="geodir-category-content fl-wrap">
-                                                <a class="listing-geodir-category" href="TourDetail.aspx?tourid=<%# Eval("TourID") %>">Go Here!</a>
-                                                <div class="listing-avatar"><a href="author-single.html"><img runat="server" src='<%# Eval("TourImg","~/TourImages/{0}") %>' alt='<%# Eval("TourImg","~/TourImages/{0}") %>'></a>
-                                                    <span class="avatar-tooltip">Added By:  <strong><%# Eval("TourName") %></strong></span>
+                                                <a class="listing-geodir-category" href='TourDetail.aspx?tourid=<%# Eval("TourID") %>'>Go Here!</a>
+                                                <div class="listing-avatar"><%--<a href="#">--%><img runat="server" src='<%# Eval("ProfileImg","~/ProfileImages/{0}") %>' alt='<%# Eval("TourImg","~/TourImages/{0}") %>'></a>
+                                                    <span class="avatar-tooltip">Added By:  <strong><%# Eval("FullName") %></strong></span>
                                                 </div>
-                                                <h3><a href="listing-single.html"><%# Eval("TourName") %></a></h3>
+                                                <h3><a href='TourDetail.aspx?tourid=<%# Eval("TourID") %>'><%# Eval("TourName") %></a></h3>
                                                 <p><%# Eval("Description") %></p>
                                                 <div class="geodir-category-options fl-wrap">
                                                     <div class="listing-rating card-popup-rainingvis" data-starrating2="5">

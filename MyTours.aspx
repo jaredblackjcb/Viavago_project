@@ -58,7 +58,7 @@
                                                     <h4><a href='TourDetail.aspx?tourid=<%# Eval("TourID") %>'>  <%# Eval("TourName") %></a></h4>
                                                     <span class="dashboard-listing-table-address"><i class="fa fa-map-marker"></i><a href="#"><%# Eval("Address") %></a></span>
                                                     <div class="listing-rating card-popup-rainingvis fl-wrap" data-starrating2='<%# Eval("AverageRating") %>'>
-                                                        <span>(<%# Eval("NumberOfReviews") %>reviews)</span>
+                                                        <span><%# Eval("NumberOfReviews") %></span>
                                                     </div>
                                                     <ul class="dashboard-listing-table-opt  fl-wrap">
                                                         <li><a href='EditTour.aspx?tourid=<%# Eval("TourID") %>'>Edit <i class="fa fa-pencil-square-o"></i></a></li>

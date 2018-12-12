@@ -408,7 +408,7 @@
                 <!--profile-edit-wrap end -->
             </div>
             <!--container end -->
-            <asp:Label ID="lblStatus" runat="server" Text="Label"></asp:Label>
+            <asp:Label ID="lblStatus" runat="server" Text=""></asp:Label>
         </section>
         <!-- section end -->
         <div class="limit-box fl-wrap"></div>
